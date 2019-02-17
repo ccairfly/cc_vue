@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue品牌列表案例</title>
+    <script src="./vue_2.5.22.js"></script>
+    <link rel="stylesheet" href="./bootstrap3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <br>
+        <div class="form-inline">
+                <div class="form-group">
+                  <label>  ID</label>
+                  <input type="text" class="form-control" placeholder="请输入数字ID" v-model="id" >
+                </div>
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" placeholder="输入品牌名称" v-model="name">
+                </div>
+                <button class="btn btn-success" @click="addHandler">添加</button>
+            </div>
+        <br>
+        <table class="table table-hover table-striped table-hover">
+            <thead>
+                <tr class="success">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Time</th>
+                    <th>Opt</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in list">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.time}}</td>
+                    <td><button class="btn btn-primary btn-xs">修改</button> <button class="btn btn-danger btn-xs">删除</button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                id:'',
+                name:'',
+                list:[
+                    { id:1 , name:"宝马", time:new Date()},
+                    { id:2 , name:"奔驰", time:new Date()},
+                    { id:3 , name:"奥迪", time:new Date()},
+                    { id:4 , name:"保时捷", time:new Date()},
+                ]
+            },
+            methods: {
+                addHandler(){
+                    if((this.id=='')||(this.name==''))
+                        return;
+                    var car = {id:this.id,name:this.name,time:new Date()}
+                    this.list.push(car)
+                    this.id=''
+                    this.name=''
+                }
+            }
+        })
+    </script>
+</body>
+</html>
