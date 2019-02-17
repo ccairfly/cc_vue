@@ -37,7 +37,7 @@
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.time}}</td>
-                    <td><button class="btn btn-primary btn-xs">修改</button> <button class="btn btn-danger btn-xs">删除</button></td>
+                    <td><button class="btn btn-primary btn-xs">修改</button> <button class="btn btn-danger btn-xs" @click="deleteHandler(item.id)">删除</button></td>
                 </tr>
             </tbody>
         </table>
@@ -64,6 +64,18 @@
                     this.list.push(car)
                     this.id=''
                     this.name=''
+                },
+
+                //根据ID删除list中的数据
+                deleteHandler(index){
+                    //1.根据ID找到list中的索引---findIndex方法
+                    var listNum = this.list.findIndex((item)=>{
+                        if(item.id == index)
+                            return true
+                    })
+                    console.log(listNum)
+                    //2.使用数组的splice方法
+                    this.list.splice(listNum,1)
                 }
             }
         })
