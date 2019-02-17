@@ -21,6 +21,8 @@
                   <input type="text" class="form-control" placeholder="输入品牌名称" v-model="name">
                 </div>
                 <button class="btn btn-success" @click="addHandler">添加</button>
+                <label>搜索：</label>
+                <input type="text" class="form-control" placeholder="搜索名称关键字" v-model="keywords">
             </div>
         <br>
         <table class="table table-hover table-striped table-hover">
@@ -33,7 +35,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in list">
+                <tr v-for="item in search(keywords)">
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.time}}</td>
@@ -54,7 +56,8 @@
                     { id:2 , name:"奔驰", time:new Date()},
                     { id:3 , name:"奥迪", time:new Date()},
                     { id:4 , name:"保时捷", time:new Date()},
-                ]
+                ],
+                keywords:''
             },
             methods: {
                 addHandler(){
@@ -76,6 +79,19 @@
                     console.log(listNum)
                     //2.使用数组的splice方法
                     this.list.splice(listNum,1)
+                },
+
+                search(keyword){
+                    //根据关键字，进行对数据的搜索
+                    //并且返回new list 
+                    var newList=[]
+                    //forEach方法遍历数组
+                    this.list.forEach(element => {
+                        if(element.name.indexOf(keyword) != -1 ){
+                            newList.push(element)
+                        }
+                    });
+                    return newList
                 }
             }
         })
