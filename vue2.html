@@ -38,7 +38,7 @@
                 <tr v-for="item in search(keywords)">
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.time}}</td>
+                    <td>{{item.time | dateFilter}}</td>
                     <td><button class="btn btn-primary btn-xs">修改</button> <button class="btn btn-danger btn-xs" @click="deleteHandler(item.id)">删除</button></td>
                 </tr>
             </tbody>
@@ -46,6 +46,15 @@
         
     </div>
     <script>
+        Vue.filter("dateFilter",function(value){
+            var year = value.getFullYear()
+            var month = value.getMonth() + 1
+            var day = value.getDate()
+            var hour = value.getHours()
+            var min = value.getMinutes().toString().padStart(2,"0")
+            var sec = value.getSeconds().toString().padStart(2,"0")
+            return ( year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec )
+        })
         var vm = new Vue({
             el: "#app",
             data: {
