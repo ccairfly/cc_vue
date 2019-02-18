@@ -18,11 +18,11 @@
                 </div>
                 <div class="form-group">
                   <label>Name</label>
-                  <input type="text" class="form-control" placeholder="输入品牌名称" v-model="name">
+                  <input type="text" class="form-control" placeholder="输入品牌名称" v-model="name" @keyup.enter="addHandler">
                 </div>
                 <button class="btn btn-success" @click="addHandler">添加</button>
                 <label>搜索：</label>
-                <input type="text" class="form-control" placeholder="搜索名称关键字" v-model="keywords">
+                <input type="text" class="form-control" placeholder="搜索名称关键字" v-model="keywords" v-focus>
             </div>
         <br>
         <table class="table table-hover table-striped table-hover">
@@ -46,6 +46,7 @@
         
     </div>
     <script>
+        //自定义过滤器，用于文本格式化'|'
         Vue.filter("dateFilter",function(value){
             var year = value.getFullYear()
             var month = value.getMonth() + 1
@@ -55,6 +56,20 @@
             var sec = value.getSeconds().toString().padStart(2,"0")
             return ( year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec )
         })
+        
+        //自定义
+        Vue.directive('focus',{
+            bind:function(){
+
+            },
+            update:function(){
+
+            },
+            inserted:function(el){
+                el.focus()
+            }
+        })
+
         var vm = new Vue({
             el: "#app",
             data: {
