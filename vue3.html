@@ -31,7 +31,9 @@
                     })
                 },
                 postInfoHandler(){
-                    this.$http.post('')
+                    this.$http.post('https://www.easy-mock.com/mock/5c6ad911d8bc8b31033c36cc/example/upload',{},{}).then((res)=>{
+                        console.log(res);
+                    })
                 }
             },
         })
