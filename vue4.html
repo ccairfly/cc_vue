@@ -15,9 +15,21 @@
         <div class="form-inline">
             <button class="btn btn-success" @click="getInfoHandler">my button</button>
             <mycom></mycom>
+            <mycom1></mycom1>
         </div>
-        
     </div>  
+    
+    <div id="app2">
+        <h3>----------- this is app2 ---------------</h3>
+        <mycom></mycom>
+        <mycom1></mycom1>
+    </div>
+
+    <template id="cc-template">
+        <div>
+            <h3>this is cc tamplate demo for components study </h3>
+        </div>
+    </template>
 
     <script>
 
@@ -26,8 +38,27 @@
             template:'<input type="text" class="form-control" placeholder="cc first component demo" v-model="id" >'
         })
 
+        Vue.component("mycom1",{
+            template:'#cc-template'
+        })
+
         var vm = new Vue({
             el: "#app",
+            data: {
+                
+            },
+
+            methods: {
+
+            },
+
+            components:{
+                
+            },
+        })
+
+        var vm2 = new Vue({
+            el: "#app2",
             data: {
                 
             },
@@ -35,6 +66,7 @@
                 
             },
         })
+
     </script>
 </body>
 </html>
