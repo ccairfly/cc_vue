@@ -16,7 +16,7 @@
             <button class="btn btn-success" @click="getInfoHandler">my button</button>
             <mycom></mycom>
             <mycom1></mycom1>
-            <mycom2></mycom2>
+            <mycom2></mycom2><p>{{msg}}</p>
         </div>
     </div>  
     
@@ -24,6 +24,7 @@
         <h3>----------- this is app2 ---------------</h3>
         <mycom></mycom>
         <mycom1></mycom1>
+        {{msg}}
         <!-- app1的私有组件,app2是看不见 -->
         <!-- <mycom2></mycom2> -->
     </div>
@@ -38,6 +39,7 @@
         <div>
             <button class="btn btn-success">test button</button>
             <h3 class="bg-success">this is app1 template component</h3>
+            <h3> {{ msg }}</h3>
         </div>
     </template>
     <script>
@@ -54,7 +56,7 @@
         var vm = new Vue({
             el: "#app",
             data: {
-                
+                msg : "vue global msg"
             },
 
             methods: {
@@ -63,7 +65,12 @@
 
             components:{
                 mycom2:{
-                    template:'#mytem2'
+                    template:'#mytem2',
+                    data:function(){
+                        return {
+                            msg : "mycom2 msg "
+                        }
+                    }
                 }
             },
         })
