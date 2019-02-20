@@ -16,6 +16,7 @@
             <button class="btn btn-success" @click="getInfoHandler">my button</button>
             <mycom></mycom>
             <mycom1></mycom1>
+            <mycom2></mycom2>
         </div>
     </div>  
     
@@ -23,14 +24,22 @@
         <h3>----------- this is app2 ---------------</h3>
         <mycom></mycom>
         <mycom1></mycom1>
+        <!-- app1的私有组件,app2是看不见 -->
+        <!-- <mycom2></mycom2> -->
     </div>
 
     <template id="cc-template">
         <div>
-            <h3>this is cc tamplate demo for components study </h3>
+            <h3>this is cc global component </h3>
         </div>
     </template>
 
+    <template id="mytem2">
+        <div>
+            <button class="btn btn-success">test button</button>
+            <h3 class="bg-success">this is app1 template component</h3>
+        </div>
+    </template>
     <script>
 
         //在内部定义的全局组件
@@ -53,7 +62,9 @@
             },
 
             components:{
-                
+                mycom2:{
+                    template:'#mytem2'
+                }
             },
         })
 
