@@ -12,14 +12,15 @@
 <body>
     <br>
     <div id="app">
-        <son v-bind:faterdata="msg_father"></son>
+        <son v-bind:faterdata="msg_father" @show="showlog"></son>
     </div>  
 
-    <template id="son" >
+    <template id="son">
         <div>
             <h2>this is son component </h2>
             <h2>{{ son_msg }}</h2>
             <h2>{{ faterdata }}</h2>
+            <button class="btn btn-success" @click='sonClickHandler'>show log</button>
         </div>
     </template>
 
@@ -36,7 +37,9 @@
             },
 
             methods: {
-
+                showlog(data,data2){
+                    console.log('this is father\'s show log ' + '\r\n' + data + data2);
+                }
             },
 
             components:{
@@ -44,7 +47,14 @@
                     template:"#son",
                     data : function(){
                         return {
-                            son_msg : "Hi this is son msg"
+                            son_msg : "Hi this is son msg",
+                            son_data: 123
+                        }
+                    },
+                    methods: {
+                        sonClickHandler(){
+                            var sonHello = "hello this is son clickHandler"
+                            this.$emit('show',sonHello,this.son_data)
                         }
                     },
                     props:['faterdata']
