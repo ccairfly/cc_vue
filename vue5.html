@@ -13,15 +13,21 @@
     <br>
     <div id="app">
         <ul class="nav nav-tabs">
-            <li role="presentation"  @click="registerHandler"><a href="#">register</a></li>
             <li role="presentation" @click="loginHandler"><a href="#">login</a></li>
+            <li role="presentation"  @click="registerHandler"><a href="#">register</a></li>
         </ul>
-        <div v-if="flag">
+
+        <div>
+            <component :is="componentName"></component>
+        </div>
+        
+        <!-- <div v-if="flag">
             <register></register>
         </div>
         <div v-else>
             <login></login>
-        </div>
+        </div> -->
+        
     </div>  
 
     <template id="register">
@@ -43,15 +49,18 @@
             el: "#app",
             data: {
                 msg : "vue global msg",
-                flag : true 
+                flag : true ,
+                componentName : "login"
             },
 
             methods: {
                 registerHandler(){
-                    this.flag = true
+                    // this.flag = true
+                    this.componentName = 'register'
                 } ,
                 loginHandler(){
-                    this.flag = false
+                    // this.flag = false
+                    this.componentName = 'login'
                 }
             },
 
