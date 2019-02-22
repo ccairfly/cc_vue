@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>send comment demo</title>
+    <script src="./vue_2.5.22.js"></script>
+    <script src="./vue-resource-v1.5.1.js"></script>
+    <link rel="stylesheet" href="./bootstrap3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div id="app">
+        <h3>{{msg}}</h3>
+        <div class="form-group">
+            <label>发表人</label>
+            <input class="form-control" placeholder="请输入发表人">
+            <label>发表内容</label>
+            <textarea class="form-control" rows="3" placeholder="请输入发表内容"></textarea>
+            <button type="button" class="btn btn-success">SendComment</button>
+        </div>
+        
+    </div>
+
+    <template>
+        
+    </template>
+
+    <script>
+
+        //在内部定义的全局组件
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg:"发表评论",
+                list:[
+                    { 
+                        
+                    }
+                ]
+            },
+        })
+
+    </script>
+</body>
+</html>
