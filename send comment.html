@@ -13,18 +13,21 @@
 
     <div id="app">
         <h3>{{msg}}</h3>
-        <div class="form-group">
-            <label>发表人</label>
-            <input class="form-control" placeholder="请输入发表人">
-            <label>发表内容</label>
-            <textarea class="form-control" rows="3" placeholder="请输入发表内容"></textarea>
-            <button type="button" class="btn btn-success">SendComment</button>
-        </div>
-        
+        <senddata></senddata>
+        <!-- 列表组 -->
+        <ul class="list-group">
+            <li class="list-group-item" v-for="item in list">{{ item.say }} <span class="badge text-right">{{ item.name }}</span></li>
+          </ul>
     </div>
 
-    <template>
-        
+    <template id="send">
+        <div class="form-group">
+            <label>发表人</label>
+            <input class="form-control" placeholder="请输入发表人" v-model="sonname">
+            <label>发表内容</label>
+            <textarea class="form-control" rows="3" placeholder="请输入发表内容" v-model="sontext"></textarea>
+            <button type="button" class="btn btn-success" @click="SendHandler">SendComment</button>
+        </div>
     </template>
 
     <script>
@@ -36,9 +39,37 @@
                 msg:"发表评论",
                 list:[
                     { 
-                        
+                        id : 1,
+                        name : '江小白',
+                        say : "我最白"
+                    },
+                    {
+                        id: 2,
+                        name : '黑妹',
+                        say : '嘿嘿,黑妹'
                     }
+
                 ]
+            },
+
+            methods : {
+
+            },
+            components : {
+                'senddata' : {  
+                    template: "#send",
+                    data:function(){
+                        return {
+                            sonname : "",
+                            sontext : "",
+                        }
+                    },
+                    methods: {
+                        SendHandler(){
+                            
+                        },
+                    },
+                }
             },
         })
 

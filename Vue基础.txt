@@ -1,0 +1,130 @@
+最基本的VUE 代码中应该有
+
+
+一.基本指令(重点)
+
+var vm = new Vue({
+	el:"",
+	data:{},
+	methods:{}
+})
+
+1.v-cloak 配合样式 
+[v-cloak]{ display: none }
+
+2.v-text在标签中插入内容例如：<div v-text="msg">======</div> 
+v-text会替换里面的内容，不会解析msg里面的标签
+
+3.v-html在标签中插入内容<div v-text="msg">======</div> 
+会把msg中的内容当做html来解析
+
+4.v-bind绑定属性的指令简写:
+常用于属性绑定data中的数据bool的值，填写a标签中的url
+<a :href="url"> data对象中url:"192.168.1.123"
+
+5.v-model用于表单输入元素的数据双向绑定
+<input type="text" v-model="msg">即可实现在表单元素中的数据双向绑定
+
+6.v-on事件绑定 缩写为@
+<input type="button" value="按钮" @click.stop="show">
+即点击之后调用show方法,show方法在methods中定义
+事件修饰符.stop阻止冒泡 .prevent阻止默认事件--常用阻止a标签跳转
+@中绑定的方法传参
+
+7.v-for指令	4种操作方式
+遍历数字	v-for="i in 10" i从1开始创建1-10个标签
+遍历数组	v-for="item in list"	{{item}}
+遍历数组2	v-for="(item,i) in list" {{item}}--{{i}} 	//i对应下标
+遍历对象	v-for="(val,key) in obj" {{key}}--{{val}}	//遍历对象中的键值对
+
+8.v-if指令和v-show指令
+v-if="flag"		//移除和添加元素
+v-show="falg"	//显示和隐藏元素
+
+
+在vue中使用bootstrap可以不使用jQuery 
+
+####根据关键字实现数组的过滤
+v-for循环显示的内容应该为搜索出的内容的新数组
+<tr v-for="item in search(keywords)">
+1.数组的遍历方法
+search(keyword){
+	//根据关键字，进行对数据的搜索
+	//并且返回newList 
+	var newList=[]
+	//forEach方法遍历数组
+	this.list.forEach(element => {
+		if(element.name.indexOf(keyword) != -1 ){
+			newList.push(element)
+		}
+	});
+	return newList
+}
+
+1.过滤器：用于常用文本的格式化
+用管道符号表示过滤器'|'
+
+2.@keyup.enter :按键修饰符.enter
+也可以自定义按键修饰符
+使用全局配置：keyCodes
+Vue.config.keyCodes.f1 = 113
+这时使用@keyup.f1即可
+
+3.自定义指令
+例如v-focus:
+使用全局配置 Vue.directive('id',{钩子函数对象})
+使用钩子函数el 为DOM对象
+
+钩子函数一般bind,inserted,update
+Vue.directive('id',{
+	bind:function(el){
+	//元素绑定时
+	},
+	inserted:function(el){
+	//元素插入时
+	}
+})
+
+
+二.生命周期和生命周期钩子函数(重点了解)
+8个生命周期钩子函数
+
+1.vue-resource的基本使用
+
+
+三.组件(重点了解)
+
+1.组件的注册:
+全局组件定义和注册:Vue.component('组件ID',模板)
+私有组件使用
+components:{
+	'组件ID' : '模板'
+}
+component中定义的data是一个function 返回一个对象,对象中的数据
+
+<component :is="componentName"></component>标签实现标签切换tab switch
+注意:componentName是一个字符串
+
+子组件中默认无法访问父组件的 data 和 methods,
+使用props[]来传值和v-bind传递值
+
+2.子组件需要调用父组件的数据v-bind绑定属性
+引用:
+<son v-bind:faterdata="msg_father"></son>
+props["fatherdata"]
+father中的data------fathermsg : "Hi this is father msg" 
+在son中使用插值表达式 {{ fatherdata }}
+
+
+3.子组件需要调用父组件的方法v-on 绑定
+
+子组件调用父组件的方法的时候可以给父组件传参数,则为子组件向父组件传值
+子组件调用父组件的方法  子组件实例.$emit('function名',参数值1,参数值2.....)
+
+
+
+
+
+
+
+
