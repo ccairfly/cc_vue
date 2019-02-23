@@ -121,10 +121,9 @@ father中的data------fathermsg : "Hi this is father msg"
 子组件调用父组件的方法的时候可以给父组件传参数,则为子组件向父组件传值
 子组件调用父组件的方法  子组件实例.$emit('function名',参数值1,参数值2.....)
 
-
-
-
-
+4.$refs可以获取DOM元素
+在标签中ref="refid"
+在script代码中this.$refs.refid获取
 
 
 

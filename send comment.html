@@ -13,6 +13,7 @@
 
     <div id="app">
         <h3>{{ msg }}</h3>
+        <h5 ref="comment_text" @click="seeText" id="comm-text">点击发表评论</h5>
         <senddata @load="loadComment"></senddata>
         <hr>
         <!-- 列表组 -->
@@ -60,6 +61,13 @@
                     var objList=JSON.parse(localStorage.getItem("sendCommentDemo") || '[]') 
                     // console.log(objList);
                     this.list = objList
+                },
+                seeText(){
+                    //原生获取DOM的方法:
+                    // var text = document.getElementById("comm-text").innerText
+                    //使用$refs获取DOM元素的方法
+                    var text = this.$refs.comment_text.innerText
+                    console.log(text);
                 },
             },
             components : {
