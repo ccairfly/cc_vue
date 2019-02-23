@@ -12,21 +12,23 @@
 <body>
 
     <div id="app">
-        <h3>{{msg}}</h3>
-        <senddata></senddata>
+        <h3>{{ msg }}</h3>
+        <senddata @load="loadComment"></senddata>
+        <hr>
         <!-- 列表组 -->
         <ul class="list-group">
             <li class="list-group-item" v-for="item in list">{{ item.say }} <span class="badge text-right">{{ item.name }}</span></li>
           </ul>
     </div>
 
+        
     <template id="send">
         <div class="form-group">
             <label>发表人</label>
-            <input class="form-control" placeholder="请输入发表人" v-model="sonname">
+            <input class="form-control" placeholder="请输入发表人" v-model="sonname" @keyup.enter="SendHandler">
             <label>发表内容</label>
-            <textarea class="form-control" rows="3" placeholder="请输入发表内容" v-model="sontext"></textarea>
-            <button type="button" class="btn btn-success" @click="SendHandler">SendComment</button>
+            <textarea class="form-control" rows="3" placeholder="请输入发表内容" v-model="sontext" ></textarea>
+            <button type="button" class="btn btn-success" @click="SendHandler" >SendComment</button>
         </div>
     </template>
 
@@ -39,12 +41,10 @@
                 msg:"发表评论",
                 list:[
                     { 
-                        id : 1,
                         name : '江小白',
                         say : "我最白"
                     },
                     {
-                        id: 2,
                         name : '黑妹',
                         say : '嘿嘿,黑妹'
                     }
@@ -52,8 +52,15 @@
                 ]
             },
 
+            created() {
+                this.loadComment()
+            },
             methods : {
-
+                loadComment(){
+                    var objList=JSON.parse(localStorage.getItem("sendCommentDemo") || '[]') 
+                    // console.log(objList);
+                    this.list = objList
+                },
             },
             components : {
                 'senddata' : {  
@@ -66,7 +73,29 @@
                     },
                     methods: {
                         SendHandler(){
+                            if(this.sonname == "" || this.sontext == "") {
+                                alert("请正确输入")
+                                return ;
+                            }
+                            var obj = {"name": this.sonname,"say": this.sontext};
+                            // console.log(this.sonname,this.sontext);
                             
+                            //1.先找出localstorage中存在的数据
+                            var obj2=JSON.parse(localStorage.getItem("sendCommentDemo") || '[]' )  
+                            //2.将现在的push进入以前的
+                            obj2.unshift(obj)
+
+                            // 3.存储前先用JSON.stringify()方法将json对象转换成字符串形式
+                            obj2 = JSON.stringify(obj2)
+                            // console.log(obj2);
+
+                            //4.将对象存储到localStorage中
+                            localStorage.setItem("sendCommentDemo",obj2)
+
+                            this.sonname = ""
+                            this.sontext = ""
+
+                            this.$emit("load")
                         },
                     },
                 }
