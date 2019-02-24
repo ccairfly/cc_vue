@@ -40,7 +40,11 @@
     <script>
         //组件模板对象,给vuerouter构造函数来使用
         var login = {
-            template : "#login"
+            template : "#login",
+            created() {
+                //$reoute.query
+                console.log(this.$route.query)
+            },
         }
         var register = {
             template : "#register"
