@@ -151,6 +151,7 @@ router : routerobj,
 
 5.<router-link to="url" tag="span">可以实现跳转,默认渲染的是a标签
 
+6.$route.query和params获取传入路由的url参数
 
 
 

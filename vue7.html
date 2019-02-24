@@ -15,7 +15,7 @@
     <div id="app">
         <ul class="nav nav-tabs">
             <router-link to="/login" tag="span">login</router-link>
-            <router-link to="/register">register</router-link>
+            <router-link to="/register/12345">register</router-link>
             <!-- <li role="presentation"><a href="#/login">login</a></li> -->
             <!-- <li role="presentation"><a href="#/register">register</a></li> -->
         </ul>
@@ -54,7 +54,8 @@
             routes: [
                 {path:'/' , redirect: "/login"},
                 {path:'/login' , component: login},
-                {path:'/register' , component: register}
+                {path:'/register' , component: register},
+                {path:'/register/:id' , component: register}
             ]
         })
 
