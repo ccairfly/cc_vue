@@ -48,6 +48,7 @@
 
         var routerobj = new VueRouter({
             routes: [
+                {path:'/' , redirect: "/login"},
                 {path:'/login' , component: login},
                 {path:'/register' , component: register}
             ]
