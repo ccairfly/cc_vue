@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-router children demo</title>
+    <script src="./vue_2.5.22.js"></script>
+    <script src="./vue-resource-v1.5.1.js"></script>
+    <script src="./vue-router-v3.0.2.js"></script>
+    <link rel="stylesheet" href="./bootstrap3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <br>
+    <div id="app">
+        <ul class="nav nav-tabs">
+            <router-link to="/account">account</router-link>
+        </ul>
+
+        <div>
+            <router-view></router-view>
+        </div>        
+    </div>  
+
+    <template id="account">
+        <div>
+            <h3>this is account component</h3> 
+            <router-link to="/account/login">login</router-link>
+            <router-link to="/account/register">register</router-link>
+            <div>
+                <router-view></router-view>
+            </div>
+        </div>
+    </template>
+
+    <template id="register">
+        <div>
+            <h3>this is cc register component </h3>
+        </div>
+    </template>
+
+    <template id="login">
+        <div>
+            <h3>this is cc login component </h3>
+        </div>
+    </template>
+
+    <script>
+        //组件模板对象,给vuerouter构造函数来使用
+        var login = {
+            template : "#login"
+        }
+        var register = {
+            template : "#register"
+        }
+
+        var account = {
+            template : "#account"
+        }
+
+        var routerobj = new VueRouter({
+            routes: [
+                {path:'/' , redirect: "/account"},
+                {
+                    path:'/account' ,
+                    component: account,
+                    children: [
+                        {path:'login' , component: login},
+                        {path:'register' , component: register},
+                    ]
+                },
+            ]
+        })
+
+        
+        //在内部定义的全局组件
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg : "vue global msg",
+                flag : true ,
+            },
+
+            //将路由规则对象注册到vue实例中
+            router : routerobj,
+
+            methods: {
+  
+            },
+        })
+
+    </script>
+</body>
+</html>
