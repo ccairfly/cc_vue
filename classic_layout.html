@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>classic layout</title>
+    <script src="./vue_2.5.22.js"></script>
+    <script src="./vue-resource-v1.5.1.js"></script>
+    <script src="./vue-router-v3.0.2.js"></script>
+    <!-- <link rel="stylesheet" href="./bootstrap3.3.7/css/bootstrap.min.css"> -->
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    h1,h2,h3 {
+        margin:0;
+        padding: 0;
+    }
+
+    .head {
+        background-color: yellow;
+        height: 80px;
+    }
+
+    .container {
+        display: flex;
+        height: 1000px;
+    }
+
+    .left {
+        flex: 1;
+        background-color: hotpink;
+    }
+
+    .main {
+        flex: 9;
+        background-color: skyblue;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <!-- <h5>{{msg}}</h5> -->
+        <router-view></router-view>
+        <div class="container">
+            <router-view name="left"></router-view>
+            <router-view name="main"></router-view>
+        </div>
+    </div>  
+
+    <template id="head">
+        <div class="head">
+            <h3>this is head component</h3> 
+        </div>
+    </template>
+
+    <template id="left" >
+        <div class="left">
+            <h3>this is cc left component </h3>
+        </div>
+    </template>
+
+    <template id="main" >
+        <div class="main">
+            <h3>this is cc main component </h3>
+        </div>
+    </template>
+
+    <script>
+        //组件模板对象,给vuerouter构造函数来使用
+        var main = {
+            template : "#main"
+        }
+        var left = {
+            template : "#left"
+        }
+
+        var head = {
+            template : "#head"
+        }
+
+        var router = new VueRouter({
+            routes: [
+                {path:"/" , redirect:"/head"},
+                {path:'/head' ,components: {
+                    default:head,
+                    left,
+                    main
+                }},
+            ]
+        })
+
+        
+        //在内部定义的全局组件
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg : "vue global msg",
+            },
+
+            //将路由规则对象注册到vue实例中,router:router的简写
+            router,
+
+            methods: {
+  
+            },
+        })
+
+    </script>
+</body>
+</html>

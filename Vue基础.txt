@@ -157,6 +157,7 @@ router : routerobj,
 
 8.vue-router中定义routes[]中的规则可以增加children属性,children中同样的参数
 
+9.<router-view>中name属性 <router-view name="main">会渲染对应的路由配置中 components 下的相应组件,命名视图
 
 
 
