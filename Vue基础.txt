@@ -126,4 +126,40 @@ father中的data------fathermsg : "Hi this is father msg"
 在script代码中this.$refs.refid获取
 
 
+四.vue-router路由(重点了解)
+1.创建路由对象,传入配置对象 路由匹配规则,规则是对象数组,
+里面的对象应该有path和component
+var routerobj = new VueRouter({
+	routes: [
+		{path:'/login' , component: login},
+		{path:'/register' , component: register}
+	]
+})
+
+2.创建组件模板对象,给vuerouter构造函数来使用
+var login = {
+	template : "#login"
+}
+var register = {
+	template : "#register"
+}
+
+3.将路由规则对象注册到vue实例中
+router : routerobj,
+
+4.在标签中使用<router-view></router-view>占位匹配路由规则
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
