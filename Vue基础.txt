@@ -149,6 +149,9 @@ router : routerobj,
 
 4.在标签中使用<router-view></router-view>占位匹配路由规则
 
+5.<router-link to="url" tag="span">可以实现跳转,默认渲染的是a标签
+
+
 
 
 
