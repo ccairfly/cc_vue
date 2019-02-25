@@ -159,7 +159,13 @@ router : routerobj,
 
 9.<router-view>中name属性 <router-view name="main">会渲染对应的路由配置中 components 下的相应组件,命名视图
 
-
+10.watch和computed的使用
+用于监听数据的变化
+watch{
+	'数据' : function(newValue,oldValue){
+	
+	}
+}
 
 
 

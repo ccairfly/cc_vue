@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue watch and computed</title>
+    <script src="./vue_2.5.22.js"></script>
+    <link rel="stylesheet" href="./bootstrap3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <br>
+        <div class="form-inline">
+                <div class="form-group">
+                  <label>firstName</label>
+                  <input type="text" class="form-control" placeholder="firstName" v-model="firstName" >
+                </div>
+                <div class="form-group">
+                  <label>lastName</label>
+                  <input type="text" class="form-control" placeholder="lastName" v-model="lastName">
+                </div>
+                <label>fullName</label>
+                <input type="text" class="form-control" placeholder="fullName" v-model="fullName" >
+            </div>
+        <br>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                firstName : "",
+                lastName : "",
+                fullName : ""
+            },
+            methods: {
+            },
+            watch: {
+                "firstName" : function(newValue , oldValue){
+                    this.fullName = newValue + '.' + this.lastName
+                },
+                "lastName" : function(newValue , oldValue){
+                    this.fullName = this.firstName + '.' + newValue
+                }
+            },
+        })
+    </script>
+</body>
+</html>
