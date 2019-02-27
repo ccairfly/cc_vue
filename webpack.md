@@ -14,5 +14,6 @@ webpack使用方法:解决依赖关系
 
 2.webpack打包基本语法: webpack [需要打包的路径] -o [输出路径]
 
-3.webpack最基本的配置文件的使用
+3.webpack最基本的配置文件的使用:在项目根目录中新建webpack.config.js文件
+
 
