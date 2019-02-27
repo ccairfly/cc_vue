@@ -21,7 +21,7 @@
                   <input type="text" class="form-control" placeholder="lastName" v-model="lastName">
                 </div>
                 <label>fullName</label>
-                <input type="text" class="form-control" placeholder="fullName" v-model="fullName" >
+                <input type="text" class="form-control" placeholder="fullName" v-model="fullName">
             </div>
         <br>
     </div>
@@ -31,16 +31,22 @@
             data: {
                 firstName : "",
                 lastName : "",
-                fullName : ""
+                //使用
+                // fullName : ""
             },
             methods: {
             },
-            watch: {
-                "firstName" : function(newValue , oldValue){
-                    this.fullName = newValue + '.' + this.lastName
-                },
-                "lastName" : function(newValue , oldValue){
-                    this.fullName = this.firstName + '.' + newValue
+            // watch: {
+            //     "firstName" : function(newValue , oldValue){
+            //         this.fullName = newValue + '.' + this.lastName
+            //     },
+            //     "lastName" : function(newValue , oldValue){
+            //         this.fullName = this.firstName + '.' + newValue
+            //     }
+            // },
+            computed: {
+                "fullName" : function(){
+                    return (this.firstName + '.' + this.lastName)
                 }
             },
         })
