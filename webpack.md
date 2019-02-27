@@ -16,4 +16,11 @@ webpack使用方法:解决依赖关系
 
 3.webpack最基本的配置文件的使用:在项目根目录中新建webpack.config.js文件
 
+4.使用webpack-dev-server这个工具,实现自动打包编译功能
+npm i webpack-dev-server -D把这个工具安装到项目本地依赖
+提示安装npm i webpack-cli -D把这个工具安装到项目本地依赖
 
+在package.json中可以定义自定义的工程命令"scripts"对象中添加
+"dev": "webpack-dev-server"
+命令输入npm run dev 启动webpack-dev-server
+使用dev-server时候bundle.js会生成在项目根目录(重要)
