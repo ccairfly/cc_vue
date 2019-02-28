@@ -24,3 +24,14 @@ npm i webpack-dev-server -D把这个工具安装到项目本地依赖
 "dev": "webpack-dev-server"
 命令输入npm run dev 启动webpack-dev-server
 使用dev-server时候bundle.js会生成在项目根目录(重要)
+
+5.html-webpack-plugin插件:
+*自动在内存中根据指定页面生成一个内存地址
+*自动把打包好的bundle.js追加到页面中去,开发者不需要记住bundle.js的地址
+在项目中安装插件npm i html-webpack-plugin -D
+在webpack.config.js中引包 const webpack = require("webpack")
+在plugins对象中new出对象并配置对象中包含入口和文件名称
+new htmlWebpackPlugin({
+	template : path.join(__dirname,"./src/index.html"),
+	filename : "index.html"
+})
