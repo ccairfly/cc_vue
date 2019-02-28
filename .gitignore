@@ -1,3 +1,4 @@
 
-/webpack_dev/node_modules/.cache
+/webpack_dev/node_modules/
 node_modules
+/webpack_dev/node_modules
