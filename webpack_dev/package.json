@@ -13,6 +13,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev2": "webpack-dev-server --open --port 5678 --hot --contentBase src",
     "dev": "webpack-dev-server"
   },
   "keywords": [],
