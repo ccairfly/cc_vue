@@ -35,3 +35,17 @@ new htmlWebpackPlugin({
 	template : path.join(__dirname,"./src/index.html"),
 	filename : "index.html"
 })
+
+6.第三方loader:
+webpack 默认只能打包处理JS类型的文件,无法处理其他类型的文件,需要安装合适的第三方loader加载器
+打包CSS文件:
+*安装style-loader 和 css-loader 进项目开发依赖 npm i style-loader css-loader -D
+*js入口中引入css文件,直接ipmort "路径" ------------import "./css/index.css"
+*在webpack.config中配置module对象节点中的rules匹配正则对象
+module : {
+	rules : [
+		// 匹配以.css结尾的正则 用这两个loader来解析
+		{ test : /\.css$/, use : ["style-loader" , "css-loader"] }
+	]
+}
+

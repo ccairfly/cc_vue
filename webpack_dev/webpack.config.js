@@ -28,5 +28,11 @@ module.exports = {
             template : path.join(__dirname,"./src/index.html"),
             filename : "index.html"
         })
-    ]
+    ],
+    module : {
+        rules : [
+            // 匹配以.css结尾的正则 用这两个loader来解析
+            { test : /\.css$/, use : ["style-loader" , "css-loader"] }
+        ]
+    }
 }
