@@ -32,7 +32,8 @@ module.exports = {
     module : {
         rules : [
             // 匹配以.css结尾的正则 用这两个loader来解析
-            { test : /\.css$/, use : ["style-loader" , "css-loader"] }
+            { test : /\.css$/, use : ["style-loader" , "css-loader"] },
+            { test : /\.(jpg|png|bmp|gif|jpeg)$/, use : "url-loader?limit=8000&name=[hash:8]-[name].[ext]" }
         ]
     }
 }

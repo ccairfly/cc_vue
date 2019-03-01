@@ -49,3 +49,6 @@ module : {
 	]
 }
 
+url-loader:(内部依赖file-loader)加入到项目开发依赖 npm i url-loader file-loader -D 
+正则匹配规则+传递参数:{ test : /\.(jpg|png|bmp|gif|jpeg)$/, use : "url-loader?limit=8000&name=[hash:8]-[name].[ext]" }
+

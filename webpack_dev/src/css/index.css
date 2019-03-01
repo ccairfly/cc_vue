@@ -2,3 +2,23 @@ li {
     list-style: none;
     font-size: 22px;
 }
+
+.father {
+    height: 400px;
+    width: 400px;
+    background-color: red;
+}
+
+.mother {
+    height: 600px;
+    width: 2500px;
+    /* background-color: yellow; */
+    background: url("../images/city-bg.png");
+    background-size: contain;
+}
+
+.son {
+    height: 50px;
+    width: 50px;
+    background-color: grey;
+}
