@@ -15,7 +15,7 @@ module.exports = {
     // 方式2:在devServer中配置
     devServer : {
         open : true,
-        contentBase: path.join(__dirname, "src"),
+        // contentBase: path.join(__dirname, "src"),    //要使用node_modules里面的东西的时候要把contentBase设置为根目录
         port : 9000,
         hot : true,  //打开hot第一步勾选true
     },
@@ -33,7 +33,9 @@ module.exports = {
         rules : [
             // 匹配以.css结尾的正则 用这两个loader来解析
             { test : /\.css$/, use : ["style-loader" , "css-loader"] },
-            { test : /\.(jpg|png|bmp|gif|jpeg)$/, use : "url-loader?limit=8000&name=[hash:8]-[name].[ext]" }
+            { test : /\.(jpg|png|bmp|gif|jpeg)$/, use : "url-loader?limit=8000&name=[hash:8]-[name].[ext]" },
+            //解析处理字体文件
+            { test : /\.(ttf|eot|svg|woff|woff2)$/, use : "url-loader" }
         ]
     }
 }

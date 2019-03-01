@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "jquery": "^3.3.1"
   },
   "devDependencies": {
@@ -19,6 +20,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev2": "webpack-dev-server --open --port 5678 --hot --contentBase src",
+    "dev3": "webpack-dev-server --open --port 5678 --hot ",
     "dev": "webpack-dev-server"
   },
   "keywords": [],

@@ -51,4 +51,6 @@ module : {
 
 url-loader:(内部依赖file-loader)加入到项目开发依赖 npm i url-loader file-loader -D 
 正则匹配规则+传递参数:{ test : /\.(jpg|png|bmp|gif|jpeg)$/, use : "url-loader?limit=8000&name=[hash:8]-[name].[ext]" }
-
+url-loader还可以处理字体文件
+{ test : /\.(ttf|eot|svg|woff|woff2)$/, use : "url-loader" }
+注意npm 安装bootstrap到项目依赖的时候应该带上版本号3.3.7 npm i bootstrap@3.3.7 -S
