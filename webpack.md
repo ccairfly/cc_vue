@@ -54,3 +54,20 @@ url-loader:(内部依赖file-loader)加入到项目开发依赖 npm i url-loader
 url-loader还可以处理字体文件
 { test : /\.(ttf|eot|svg|woff|woff2)$/, use : "url-loader" }
 注意npm 安装bootstrap到项目依赖的时候应该带上版本号3.3.7 npm i bootstrap@3.3.7 -S
+
+7.babel:
+webpack 默认只处理一部分ES6语法 ,一些更高级的ES6语法和ES7语法webpack
+处理不了的,这时候需要借助loader来帮助webpack 处理这些高级的语法,把高级的语法转化成低级的语法
+*npm i babel-core babel-loader babel-plugin-transform-runtime -D
+*注意 babel-core 和 babel-loader有版本对应关系查看babel官网
+webpack 4.x | babel-loader 8.x | babel 7.x
+webpack 4.x | babel-loader 7.x | babel 6.x
+*npm i babel-preset-env babel-preset-stage-0 -D 
+*打开webpack.config.js 输入打包匹配规则
+*在项目根目录中新建一个.babelrc 的babel的配置文件:此文件字符串必须用双引号
+{
+	"presets" : [],
+	"plugins" : ["transform-runtime"]
+}
+
+

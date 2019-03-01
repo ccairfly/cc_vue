@@ -35,7 +35,8 @@ module.exports = {
             { test : /\.css$/, use : ["style-loader" , "css-loader"] },
             { test : /\.(jpg|png|bmp|gif|jpeg)$/, use : "url-loader?limit=8000&name=[hash:8]-[name].[ext]" },
             //解析处理字体文件
-            { test : /\.(ttf|eot|svg|woff|woff2)$/, use : "url-loader" }
+            { test : /\.(ttf|eot|svg|woff|woff2)$/, use : "url-loader" },
+            { test : /\.js$/, use : "babel-loader" , exclude : /node_modules/}
         ]
     }
 }

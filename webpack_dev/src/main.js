@@ -14,3 +14,12 @@ $(function(){
         return "#" + "33445566"
     })
 })
+
+console.log("ok cc let go");
+
+class Persion {
+    static info = { "name" : "张三" , "age" : 19 }
+}
+
+console.log("this is " + Persion.info );
+
