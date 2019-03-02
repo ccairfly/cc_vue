@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cc render demo</title>
+    <script src="./vue_2.5.22.js"></script>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用render时候app中的内容会被render替换 -->
+        <!-- <text></text> -->
+    </div>
+
+    <template id="text">
+        <div>
+            <h3>{{ msg }}</h3>
+        </div>
+    </template>
+<script>
+
+    var text = {
+        template : "#text",
+        data : function(){
+            return {
+            msg : "hello cc"
+            }
+        }
+    }
+
+
+    var vm = new Vue({
+        el : "#app",
+        data: {
+            // msg : "cc vue -- hello world",
+        },
+        methods: {
+            
+        },
+        //传统组件渲染
+        components : {
+            text
+        },
+        render(createElements) {
+            return createElements(text)
+        },
+    })
+</script>
+
+</body>
+</html>

@@ -4,3 +4,4 @@ node_modules
 /webpack_dev/node_modules
 /package-lock.json
 /webpack_dev/package-lock.json
+package-lock.json

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>webpack vue</title>
+    <!-- 使用dev-server时候bundle.js会生成在项目根目录 -->
+    <!-- 使用了html-webpack-plugin之后可以不用写bundle.js的路径了 -->
+    <!-- <script src="../bundle.js"></script> -->   
+</head>
+<body>
+    <div class="father">
+        <h4>
+            father
+        </h4>
+        <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+    </div>
+
+    <div id="app">
+        <newtext></newtext>
+    </div>
+
+    <template id="newtext">
+        <div>
+            <h3>{{ msg }}</h3>
+        </div>
+    </template>
+</body>
+</html>
