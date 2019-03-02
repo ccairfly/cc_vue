@@ -38,6 +38,10 @@ resolve : {
 在webpack.config中引用 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 plugins中new VueLoaderPlugin()
 
+4.export default 和 export导出
+export default 只能导出一个,export 是按需导出,可以导出多个,外面只能用{}来接收,名称要一样
+每个.vue中需要export default 导出一个模板对象以便用于控制
+注意:使用了export default导出模板对象之后 {{ msg }} 插值表达式才不会报错
 
 
 

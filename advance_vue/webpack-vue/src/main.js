@@ -23,7 +23,8 @@ var vm = new Vue({
     },
     //使用runtime-vue的时候只能使用render函数进行渲染
     render(createElements) {
-     return createElements(newtext)   
+    // console.log(newtext);
+    return createElements(newtext)   
     }
 
 })
