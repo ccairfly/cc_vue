@@ -9,14 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import Vue from "vue"
 
-var newtext = {
-    template : "#newtext",
-    data() {
-        return {
-            msg : "hello webpack vue --cc"
-        }
-    },
-}
+import newtext from "./text.vue"
 
 var vm = new Vue({
     el : "#app",
@@ -27,6 +20,10 @@ var vm = new Vue({
     },
     components : {
         newtext
+    },
+    //使用runtime-vue的时候只能使用render函数进行渲染
+    render(createElements) {
+     return createElements(newtext)   
     }
 
 })

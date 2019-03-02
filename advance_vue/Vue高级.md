@@ -30,6 +30,33 @@ resolve : {
 	}
 }
 
+3.结合webpack和vue(重点)
+*入口js中导入vue组件,这里是text.vue
+*webpack默认不支持打包.vue,需要安装第三方loader进入开发依赖 npm i vue-loader vue-template-compiler -D 
+*webpack配置{ test : /\.vue$/, use : "vue-loader"} 使用vue-loader解析.vue
+*Vue-loader在15.x之后的版本都是 vue-loader的使用都是需要伴生 VueLoaderPlugin的
+在webpack.config中引用 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+plugins中new VueLoaderPlugin()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
