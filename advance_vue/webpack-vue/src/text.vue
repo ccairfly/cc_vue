@@ -1,6 +1,9 @@
 <template id="newtext">
         <div>
+            <router-link to="/" tag="button">back</router-link>
             <h3>{{ msg }}</h3>
+            <router-link to="/login" tag="button">go to login</router-link> <router-link to="/register" tag="button">go to register</router-link>
+            <router-view></router-view>
         </div>
 </template>
 

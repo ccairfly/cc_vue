@@ -11,6 +11,22 @@ import Vue from "vue"
 
 import newtext from "./text.vue"
 
+//导入vue-router之后需要使用Vue.use创建出来
+import VueRouter from "vue-router"
+
+import login from "./router/login.vue"
+import register from "./router/register.vue"
+
+Vue.use(VueRouter)
+
+var router = new VueRouter({
+    routes : [
+        { path: '/',  },
+        { path: '/login', component : login },
+        { path: '/register', component : register }
+    ]
+})
+
 var vm = new Vue({
     el : "#app",
     data : {
@@ -23,8 +39,8 @@ var vm = new Vue({
     },
     //使用runtime-vue的时候只能使用render函数进行渲染
     render(createElements) {
-    // console.log(newtext);
-    return createElements(newtext)   
-    }
-
+        // console.log(newtext);
+        return createElements(newtext)   
+    },
+    router,
 })

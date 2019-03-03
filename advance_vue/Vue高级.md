@@ -43,6 +43,18 @@ export default 只能导出一个,export 是按需导出,可以导出多个,外�
 每个.vue中需要export default 导出一个模板对象以便用于控制
 注意:使用了export default导出模板对象之后 {{ msg }} 插值表达式才不会报错
 
+5.webpack-vue中使用vue-router
+*安装vue-router进入项目依赖npm i vue-router -S
+*导入包并手动安装import vueRouter from "vue-router"之后Vue.use(vueRouter)
+*创建路由对象并引入组件模板
+var router = new VueRouter({
+	routes : [
+		{path : "./xxx" , component : xxx},
+		{path : "./xxx2" , component : xxx2}
+	]
+})
+*在实例上挂载路由使用router-view和router-link
+
 
 
 
