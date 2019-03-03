@@ -55,7 +55,8 @@ var router = new VueRouter({
 })
 *在实例上挂载路由使用router-view和router-link
 
-
+6.style样式,style默认是全局样式,加入scoped属性,变成局部样式
+lang属性,可以设置支持style标签scss less语法
 
 
 

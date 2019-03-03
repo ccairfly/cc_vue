@@ -13,24 +13,12 @@ import newtext from "./text.vue"
 
 //导入vue-router之后需要使用Vue.use创建出来
 import VueRouter from "vue-router"
+import router from "./js/router.js"
 
-import account from "./router/account.vue"
-import login from "./router/login.vue"
-import register from "./router/register.vue"
-import goodslist from "./router/goodslist.vue"
 
 Vue.use(VueRouter)
 
-var router = new VueRouter({
-    routes : [
-        { path: '/',  },
-        { path: '/goodslist', component:goodslist },
-        { path: '/account', component : account ,children : [
-            { path: '/login', component : login },
-            { path: '/register', component : register },
-        ]},
-    ]
-})
+
 
 var vm = new Vue({
     el : "#app",
