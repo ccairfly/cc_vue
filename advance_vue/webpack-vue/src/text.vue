@@ -1,8 +1,9 @@
 <template id="newtext">
         <div>
-            <router-link to="/" tag="button">back</router-link>
             <h3>{{ msg }}</h3>
-            <router-link to="/login" tag="button">go to login</router-link> <router-link to="/register" tag="button">go to register</router-link>
+            <router-link to="/" tag="button">back</router-link>
+            <router-link to="/account" tag="button">进入账户</router-link>
+            <router-link to="/goodslist" tag="button">进入商品</router-link>
             <router-view></router-view>
         </div>
 </template>
