@@ -6,3 +6,5 @@ import { Header } from 'mint-ui'
 在页面中引入即可<mt-header fixed title="cc vue project"></mt-header>
 4.底部Tab-bar是使用了mui,github下载mui_master代码段
 直接查找mui的源代码和样式放入lib文件夹中即可使用,与bootstrap类似
+5.tabBar图标可以去mui中的example icon中寻找,还有extra icon需要额外导入css和ttf
+6.使用router-link替换a标签 router中可以定义linkActiveClass,active类
