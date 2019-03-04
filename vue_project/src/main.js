@@ -13,6 +13,16 @@ import App from "./App.vue"
 import VueRouter from "vue-router"
 import router from "./js/router.js"
 
+// 引入mui和mint-ui的样式
+import "../lib/mui/css/mui.min.css"
+
+import 'mint-ui/lib/style.css'
+import { Header } from 'mint-ui';
+import { Button } from 'mint-ui';
+
+Vue.component(Button.name, Button);
+Vue.component(Header.name, Header);
+
 Vue.use(VueRouter)
 
 var vm = new Vue({
