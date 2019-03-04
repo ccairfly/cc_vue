@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>this is login component</h4>
+        <h4>this is Search component</h4>
     </div>
 </template>
 
@@ -9,9 +9,7 @@
 </script>
 
 <style scoped>
-div {
-    color: red;
-}
+
 </style>
 
 

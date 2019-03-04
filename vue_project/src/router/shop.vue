@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>this is goodslist component</h3>
+        <h3>this is Shop component</h3>
     </div>
 </template>
 

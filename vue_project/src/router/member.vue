@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>this is register component</h4>
+        <h4>this is Member component</h4>
     </div>
 </template>
 
