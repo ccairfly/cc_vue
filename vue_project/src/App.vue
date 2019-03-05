@@ -6,7 +6,6 @@
                 </router-link>
             </mt-header>
 
-            <h3>{{ msg }}</h3>
             <router-view></router-view>
 
             <nav class="mui-bar mui-bar-tab">
