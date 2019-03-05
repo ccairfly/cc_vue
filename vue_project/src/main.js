@@ -9,6 +9,8 @@ import Vue from "vue"
 
 import App from "./App.vue"
 
+// 导入vue-resource
+import VueResource from "vue-resource"
 //导入vue-router之后需要使用Vue.use创建出来
 import VueRouter from "vue-router"
 import router from "./js/router.js"
@@ -28,6 +30,7 @@ Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 
 Vue.use(VueRouter)
+Vue.use(VueResource)
 
 var vm = new Vue({
     el : "#app",

@@ -5,9 +5,8 @@
                 <mt-button icon="back">返回</mt-button>
                 </router-link>
             </mt-header>
-
+            
             <router-view></router-view>
-
             <nav class="mui-bar mui-bar-tab">
                 <router-link class="mui-tab-item" to="/home">
                     <span class="mui-icon mui-icon-home"></span>

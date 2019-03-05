@@ -9,3 +9,10 @@ import { Header } from 'mint-ui'
 5.tabBar图标可以去mui中的example icon中寻找,还有extra icon需要额外导入css和ttf
 6.使用router-link替换a标签 router中可以定义linkActiveClass,active类
 7.使用mint-ui轮播图组件,swipe
+8.使用vue-resource发送请求 安装vue-resource开发依赖 npm i vue-resource -S
+引包和使用 
+this.$http.get('/url地址').then(response => {
+	console.log(response.body);
+}, response => {
+	// error callback
+});
