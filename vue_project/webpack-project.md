@@ -16,3 +16,7 @@ this.$http.get('/url地址').then(response => {
 }, response => {
 	// error callback
 });
+
+9.使用vue-resource加载首页轮播图数据存放在list中
+使用get请求获取数据,将得到的图片url数据渲染到img标签中v-for="item in list" :key="item.url"(在组件中使用v-for必须要传入一个key,这个key使用的是数组中的url)
+

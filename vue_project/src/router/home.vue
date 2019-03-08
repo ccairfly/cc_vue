@@ -2,11 +2,9 @@
     <div>
         <h3>this is Home component</h3>
         <mt-swipe :auto="3000">
-            <mt-swipe-item>1</mt-swipe-item>
-            <mt-swipe-item>
-                <!-- <img src="http://e.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=ddcf0a2b5f82b2b7a7ca31c0049de7d9/f3d3572c11dfa9ecf698c43864d0f703918fc16f.jpg"> -->
+            <mt-swipe-item v-for="item in swipeData " :key="item.url">
+                <img :src="item.url" alt="">
             </mt-swipe-item>
-            <mt-swipe-item>3</mt-swipe-item>
         </mt-swipe>
         <mt-button type="primary" size="small" @click="btnHandler">点击</mt-button>
         		<div class="mui-content">
@@ -35,11 +33,16 @@
 </template>
 
 <script>
+    import { Toast } from 'mint-ui';
+
     export default {
         data : function () {
             return {
-
+                swipeData : []
             }
+        },
+        created(){
+            this.getSwipeImage()
         },
         methods : {
             btnHandler(){
@@ -48,6 +51,15 @@
                 }, response => {
                 // error callback
                 });
+            },
+            getSwipeImage(){
+                this.$http.get('https://www.easy-mock.com/mock/5c6ad911d8bc8b31033c36cc/example/cc-get-image').then(response => {
+                    // console.log(response.body.data.img);
+                    this.swipeData = response.body.data.img;
+                }, response => {
+                // error callback
+                    Toast("获取数据失败了")
+                });
             }
         }
     }
@@ -55,10 +67,13 @@
 
 <style scoped>
     .mint-swipe {
-        /* width: 300px; */
-        height: 300px;
+        height: 250px;
     }
-    .mint-swipe .mint-swipe-item:nth-child(1) {
+    .mt-swipe-item,img{
+        width: 100%;
+        height: 100%;
+    }
+    /* .mint-swipe .mint-swipe-item:nth-child(1) {
        background: url("http://bpic.ooopic.com/17/85/10/17851052-1a895f0a596d69614e7c76afab83b802.jpg");
        background-repeat: no-repeat;
        background-size:cover;
@@ -72,5 +87,5 @@
        background: url("http://hbimg.b0.upaiyun.com/c86e48333af7abf2c5899ffb36afc68df850d86357d2-CgSaZJ_fw658");
        background-repeat: no-repeat;
        background-size:cover;
-    }
+    } */
 </style>
