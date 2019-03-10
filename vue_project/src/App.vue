@@ -52,5 +52,7 @@ export default {
 <style scoped>
     .app-container {
         padding-top: 40px;
+        padding-bottom: 50px;   
+        /* 使用padding-bottom来防止最后一条信息显示不全的问题 */
     }
 </style>

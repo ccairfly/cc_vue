@@ -1,3 +1,4 @@
+
 1.新建一个webpack-vue模板项目,安装所需要的包 npm i
 2.项目界面---头部---中间组件内容---底部Tabbar
 3.头部开始找到mint-ui有现成的代码段main.js中引入
@@ -19,4 +20,17 @@ this.$http.get('/url地址').then(response => {
 
 9.使用vue-resource加载首页轮播图数据存放在list中
 使用get请求获取数据,将得到的图片url数据渲染到img标签中v-for="item in list" :key="item.url"(在组件中使用v-for必须要传入一个key,这个key使用的是数组中的url)
+
+10.首页新闻资讯a标签改造成router-link路由,新增路由组件newlist
+*新闻资讯页面布局制作,使用MUI中的media-list
+*使用vue-resource获取新闻资讯数据并渲
+*获取到的数据存储在程序内部的list[]中,使用v-for将拿到的数据一起渲染页面
+
+11.新闻详情页面的制作:
+*将资讯列表的路由改造成router-link,传入ID参数/url/xx 
+*路由匹配规则创建的时候匹配ID,匹配规则可以使用/:id,后面可以使用$route来接收router传递过来的参数
+*使用$route.params接收使用:xx 传递来的参数  使用$route.query接收使用?xx传递来的参数
+
+12.获取并渲染新闻详情页面
+
 

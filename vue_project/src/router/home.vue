@@ -1,29 +1,28 @@
 <template>
     <div>
-        <h3>this is Home component</h3>
         <mt-swipe :auto="3000">
             <mt-swipe-item v-for="item in swipeData " :key="item.url">
                 <img :src="item.url" alt="">
             </mt-swipe-item>
         </mt-swipe>
-        <mt-button type="primary" size="small" @click="btnHandler">点击</mt-button>
+        <mt-button type="primary" size="small" @click="btnHandler">点击获取data</mt-button>
         		<div class="mui-content">
 		        <ul class="mui-table-view mui-grid-view mui-grid-9">
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><a href="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><router-link to="/newlist">
 		                    <span class="mui-icon mui-icon-home"></span>
-		                    <div class="mui-media-body">Home</div></a></li>
+		                    <div class="mui-media-body">新闻资讯</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><a href="#">
 		                    <span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
-		                    <div class="mui-media-body">Email</div></a></li>
+		                    <div class="mui-media-body">图片分享</div></a></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><a href="#">
 		                    <span class="mui-icon mui-icon-chatbubble"></span>
-		                    <div class="mui-media-body">Chat</div></a></li>
+		                    <div class="mui-media-body">商品购买</div></a></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><a href="#">
 		                    <span class="mui-icon mui-icon-location"></span>
-		                    <div class="mui-media-body">location</div></a></li>
+		                    <div class="mui-media-body">留言反馈</div></a></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><a href="#">
 		                    <span class="mui-icon mui-icon-search"></span>
-		                    <div class="mui-media-body">Search</div></a></li>
+		                    <div class="mui-media-body">视频专区</div></a></li>
 		           <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><a href="#">
 		                    <span class="mui-icon mui-icon-more"></span>
 		                    <div class="mui-media-body">more</div></a></li>
