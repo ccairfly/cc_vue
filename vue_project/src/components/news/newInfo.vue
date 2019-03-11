@@ -7,10 +7,15 @@
         </div>
         <hr>
         <div class="info-content" v-html="redata.content"></div>
+        <hr>
+        <comment></comment>
     </div>
 </template>
 
 <script>
+
+import comment from '../subcomponent/comment.vue'
+
 export default {
     data(){
         return {
@@ -25,12 +30,15 @@ export default {
         // 获取新闻详情
         getNewsInfo(){
             this.$http.get("https://www.easy-mock.com/mock/5c6ad911d8bc8b31033c36cc/example/cc-get-newsInfo").then(data=>{
-                    console.log(data.body.data[this.id]);
+                    // console.log(data.body.data[this.id]);
                     this.redata = data.body.data[this.id]
                 },err=>{
                     console.log(请求发生错误了 + err)
                 })
         },
+    },
+    components:{
+        "comment":comment,
     }
 }
 </script>

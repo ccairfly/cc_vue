@@ -33,4 +33,8 @@ this.$http.get('/url地址').then(response => {
 
 12.获取并渲染新闻详情页面
 
+13.内容评论组件
+*新建comment组件,基本样式的制作,并显示在父组件中,父组件若要使用子组件,需要导入子组件,然后挂载在components对象中,挂载后使用标签使用子组件
+*发起网页请求后台数据,,点击加载更多之后传入的参数pageIndex++然后调用getcomment方法 comment方法中发起请求的pageIndex参数发生变化
+*为了防止数据被覆盖,点击加载更多之后应该不覆盖掉之前的数据应该使用contact方法拼接以前的数据this.comment = this.comment.contact(data.body.data.message)
 
