@@ -25,8 +25,8 @@ export default {
         // 获取新闻详情
         getNewsInfo(){
             this.$http.get("https://www.easy-mock.com/mock/5c6ad911d8bc8b31033c36cc/example/cc-get-newsInfo").then(data=>{
-                    console.log(data.body.data[0]);
-                    this.redata = data.body.data[0]
+                    console.log(data.body.data[this.id]);
+                    this.redata = data.body.data[this.id]
                 },err=>{
                     console.log(请求发生错误了 + err)
                 })
