@@ -1,12 +1,12 @@
 
 import VueRouter from "vue-router"
 
-import home from "../router/home.vue"
-import member from "../router/member.vue"
-import shop from "../router/shop.vue"
-import search from "../router/search.vue"
-import newlist from "../router/news/newlist.vue"
-import newinfo from "../router/news/newInfo.vue"
+import home from "../components/home.vue"
+import member from "../components/member.vue"
+import shop from "../components/shop.vue"
+import search from "../components/search.vue"
+import newlist from "../components/news/newlist.vue"
+import newinfo from "../components/news/newInfo.vue"
 
 var router = new VueRouter({
     routes : [
