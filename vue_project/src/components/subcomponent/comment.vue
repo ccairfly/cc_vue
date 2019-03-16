@@ -10,7 +10,7 @@
                     第{{ index }}楼:&nbsp;&nbsp;&nbsp;用户:{{item.user_name}}&nbsp;&nbsp;&nbsp;日期:2019-03-11 22:46
                 </div>
                 <div class="cmt-body">
-                    {{ item.comment }}
+                    {{ item.comment | commentFilter}}
                 </div>
             </div>
         </div>
@@ -39,6 +39,12 @@ export default {
             },err=>{
                 console.log("这是一个寂寞的错误");
             })
+        }
+    },
+    filters: {
+        commentFilter: function (value) {
+            if ((value == "")||(value ==undefined)) return '该用户很,懒啥也没留下'
+            return value
         }
     },
     props:["newInfoId"]
