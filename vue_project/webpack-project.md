@@ -38,3 +38,11 @@ this.$http.get('/url地址').then(response => {
 *发起网页请求后台数据,,点击加载更多之后传入的参数pageIndex++然后调用getcomment方法 comment方法中发起请求的pageIndex参数发生变化
 *为了防止数据被覆盖,点击加载更多之后应该不覆盖掉之前的数据应该使用contact方法拼接以前的数据this.comment = this.comment.contact(data.body.data.message)
 
+14.##发表评论
+*文本框做双向数据绑定,发表按钮做点击绑定时间
+*校验评论是否为空,如果为空则弹出Toast提示
+*通过vue-resource通过post请求把数据发送到服务器保存
+*当发表评论ok之后,重新刷新页面,以便显示查看最新评论(可以调用getComment方法实现) ---一般本地将内容直接unshift进入数组第一个内容显示出来就好了
+
+15.图片分享组件:
+*制作顶部滑动tabbar,注意:借助于MUI中的tab-top-webview-main 并需要把slider区域的mui-fullscreen类去掉(不需要全屏)

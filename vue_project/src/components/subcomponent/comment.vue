@@ -2,8 +2,8 @@
     <div class="comment-box">
         <h3>发表评论</h3>
         <hr>
-        <textarea id="textarea" rows="5" placeholder="请输入要BB的内容(最多200个字)"></textarea>
-        <button type="button" class="mui-btn mui-btn-primary mui-btn-block">点击发表</button>
+        <textarea id="textarea" rows="5" placeholder="请输入要BB的内容(最多200个字)" v-model="commentMessage"></textarea>
+        <button type="button" class="mui-btn mui-btn-primary mui-btn-block" @click="postComment">点击发表</button>
         <div class="comment-list">
             <div class="comment-item" v-for="(item,index) in commentList" :key="item.add_time">
                 <div class="cmt-head">
@@ -24,6 +24,7 @@ export default {
         return {
             commentList:[],
             pageIndex:1,
+            commentMessage : ""
         }
     },
     created(){
@@ -39,7 +40,11 @@ export default {
             },err=>{
                 console.log("这是一个寂寞的错误");
             })
-        }
+        },
+        postComment(){
+            console.log("发表评论的方法");
+            // this.$http.post();
+        },
     },
     filters: {
         commentFilter: function (value) {
