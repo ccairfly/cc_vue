@@ -7,6 +7,7 @@ import shop from "../components/shop.vue"
 import search from "../components/search.vue"
 import newlist from "../components/news/newlist.vue"
 import newinfo from "../components/news/newInfo.vue"
+import imgShareHome from "../components/imgShare/imgShareHome.vue"
 
 var router = new VueRouter({
     routes : [
@@ -17,6 +18,7 @@ var router = new VueRouter({
         { path: '/member', component:member },
         { path: '/newlist', component:newlist },
         { path: '/newinfo/:id', component:newinfo },
+        { path: '/imgShare', component:imgShareHome },
         // { path: '/account', component : account ,children : [
         // ]},
     ],

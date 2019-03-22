@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "babel-plugin-transform-remove-strict-mode": "0.0.2",
     "bootstrap": "^3.3.7",
     "jquery": "^3.3.1",
     "mint-ui": "^2.2.13",

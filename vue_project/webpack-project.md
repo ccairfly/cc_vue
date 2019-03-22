@@ -46,3 +46,12 @@ this.$http.get('/url地址').then(response => {
 
 15.图片分享组件:
 *制作顶部滑动tabbar,注意:借助于MUI中的tab-top-webview-main 并需要把slider区域的mui-fullscreen类去掉(不需要全屏)
+*使用scroll区域滚动组件:导入MUI js文件,导入时候报错strict mode会报错,把webpack配置中启用严格模式禁用.import mui from "./xxxx"
+*需要使用 babel 插件:安装 npm i babel-plugin-transform-remove-strict-mode ...在.babelrc文件中添加"plugins": ["transform-remove-strict-mode"]
+*在chrome为了提高页面的流程度,滑动的时候会出现报警 在style标签里面添加 *{ touch-action: pan-y; },用于某个特定区域是否开放给用户操作(比如浏览器滑动,缩放等)
+*刚进入页面不能滑动的问题,使用生命周期钩子函数,mounted:当组件中的DOM结构渲染好了之后,再执行滑动空间的初始化,
+操作DOM元素的时候要在mounted钩子函数中操作
+mui('.mui-scroll-wrapper').scroll({
+	deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+});
+*当滑动条调试好之后发现APP.vue中的tabbar无法正常工作,发现是新加入的mui scroll样式冲突,需要重新改一下样式名称mui-tab-item,
