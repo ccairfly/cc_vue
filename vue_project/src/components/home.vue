@@ -45,7 +45,7 @@
         },
         methods : {
             btnHandler(){
-                this.$http.get('https://www.easy-mock.com/mock/5c6ad911d8bc8b31033c36cc/example/cc-get-data').then(response => {
+                this.$http.get('http://127.0.0.1/getdata').then(response => {
                     console.log(response.body);
                 }, response => {
                 // error callback

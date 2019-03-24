@@ -20,6 +20,9 @@ import "../lib/mui/css/mui.min.css"
 import "../lib/mui/css/icons-extra.css"
 
 import 'mint-ui/lib/style.css'
+
+require('./mock/mockIndex')
+
 import { Header } from 'mint-ui';
 import { Button } from 'mint-ui';
 import { Swipe, SwipeItem } from 'mint-ui';
