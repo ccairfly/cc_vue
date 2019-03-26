@@ -54,4 +54,21 @@ this.$http.get('/url地址').then(response => {
 mui('.mui-scroll-wrapper').scroll({
 	deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 });
-*当滑动条调试好之后发现APP.vue中的tabbar无法正常工作,发现是新加入的mui scroll样式冲突,需要重新改一下样式名称mui-tab-item,
+*当滑动条调试好之后发现APP.vue中的tabbar无法正常工作,发现是新加入的mui scroll样式冲突,需要重新改一下样式名称mui-tab-item
+
+16.获取图片数据实现图片懒加载效果,mint-ui提供现成的组件"lazy-load" 将懒加载的代码和样式复制到工程当中(中间小圈圈的样式)
+*lazy-load与vue冲突所以在使用lazy-load的时候只能全局引入mint-ui 和munt-ui的样式
+*获取图片数据渲染图片列表数据(每张图片高300的情况下) 圈圈默认在最左边,父盒子添加text-align: center;
+img[lazy=loading] {
+  width: 40px;
+  height: 300px;
+  margin: auto;
+}
+*渲染图片列表使用的是v-lazy指令
+<ul>
+	<li v-for="item in imgdatalist" :key="item.id">
+		<img v-lazy="item">
+	</li>
+</ul>
+
+

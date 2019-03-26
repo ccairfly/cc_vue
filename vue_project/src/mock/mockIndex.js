@@ -8,3 +8,7 @@ Mock.mock('http://127.0.0.1/main.php?cid=1','post',()=>{
 Mock.mock('http://127.0.0.1/getdata','get',()=>{
     return mydata.mockdata1
 });
+
+Mock.mock('http://127.0.0.1/getImage','get',()=>{
+    return mydata.mockImageData
+});

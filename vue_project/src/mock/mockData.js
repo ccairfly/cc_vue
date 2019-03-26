@@ -40,9 +40,20 @@ var mockdata1 = Mock.mock({
     }],
 })
 
+var mockImageData = Mock.mock({
+    id : 0,
+    'list|11' : [{
+        'id|+1' : 0,
+        'title' : '@ctitle(3, 12)',
+        'imgUrl' : imgUrl,
+        'abtract' : '@cparagraph(2)'
+    }]
+})
+
 const res = {
     page1,
     mockdata1,
+    mockImageData,
 }
 
 export default res 

@@ -19,18 +19,20 @@ import router from "./js/router.js"
 import "../lib/mui/css/mui.min.css"
 import "../lib/mui/css/icons-extra.css"
 
-import 'mint-ui/lib/style.css'
-
 require('./mock/mockIndex')
 
-import { Header } from 'mint-ui';
-import { Button } from 'mint-ui';
-import { Swipe, SwipeItem } from 'mint-ui';
+// import { Header } from 'mint-ui';
+// import { Button } from 'mint-ui';
+// import { Swipe, SwipeItem } from 'mint-ui';
 
-Vue.component(Button.name, Button);
-Vue.component(Header.name, Header);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
+// Vue.component(Header.name, Header);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+
+import mintUI from 'mint-ui'
+Vue.use(mintUI)
+import 'mint-ui/lib/style.css'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
