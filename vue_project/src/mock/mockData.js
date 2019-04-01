@@ -41,12 +41,12 @@ var mockdata1 = Mock.mock({
 })
 
 var mockImageData = Mock.mock({
-    id : 0,
-    'list|11' : [{
+    imgurl : imgUrl,
+    'datalist|12' : [{
         'id|+1' : 0,
         'title' : '@ctitle(3, 12)',
-        'imgUrl' : imgUrl,
-        'abtract' : '@cparagraph(2)'
+        'abtract' : '@cparagraph(2)',
+        'imgdataurl' : ''
     }]
 })
 

@@ -28,8 +28,12 @@
 			</div>
 			<!-- 图片列表区域 -->
 			<ul class="photolist">
-				<li v-for="item in imgdatalist" :key="item.id">
-					<img v-lazy="item">
+				<li v-for="item in imgdatalist" :key="item.id" >
+					<img v-lazy="item.imgdataurl">
+					<div class="info">
+						<h1 class="info-title">{{ item.title }}</h1>
+						<div class="info-body">{{ item.abtract }}</div>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -42,7 +46,8 @@ import { Toast } from 'mint-ui';
 export default {
     data(){
         return {
-            imgdatalist:[] //图片列表的数据
+			imgUrlList:[], //图片列表的数据
+			imgdatalist:[]
         }
 	},
 	created(){
@@ -57,8 +62,13 @@ export default {
 	methods : {
 		getImageData(){
 			this.$http.get("http://127.0.0.1/getImage").then(res=>{
-				this.imgdatalist = res.body.list[0].imgUrl
-				// console.log(this.imgdatalist);
+				this.imgUrlList = res.body.imgurl
+				// console.log(this.imgUrlList);
+				this.imgdatalist = res.body.datalist
+				this.imgdatalist.forEach((item,index)=>{
+					this.imgdatalist[index].imgdataurl = this.imgUrlList[index]
+				})
+				console.log(this.imgdatalist);
 			},err=>{
 				Toast("获取图片列表失败")
 			})
@@ -74,7 +84,7 @@ export default {
 
 img {
 	width: 100%;
-	height: 100%;
+  	height: 100%;
 	margin: auto;
 	vertical-align: middle;
 }
@@ -91,11 +101,27 @@ img[lazy=loading] {
 	padding-bottom: 0px;
 }
 .photolist li{
-	width: 400px;
-  	height: 300px;
+	/* width: 400px;
+  	height: 300px; */
 	background-color: #ccc;
 	margin-bottom: 10px;
 	text-align: center;
-	box-shadow: 0,0,9px,#999
+	box-shadow: 0,0,9px,#999;
+	position: relative;
+}
+
+.info {
+	color: white;
+	text-align: left;
+	position: absolute;
+	bottom: 0px;
+	background-color: rgba(0,0,0,0.4);
+	width: 100%;
+}
+.info .info-title {
+	font-size: 14px;
+}
+.info .info-body {
+	font-size: 12px;
 }
 </style>
