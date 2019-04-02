@@ -40,6 +40,7 @@ var mockdata1 = Mock.mock({
     }],
 })
 
+//Mock图片列表数据
 var mockImageData = Mock.mock({
     imgurl : imgUrl,
     'datalist|12' : [{
@@ -50,10 +51,20 @@ var mockImageData = Mock.mock({
     }]
 })
 
+var mockImgInfo = function() {
+    return Mock.mock({
+        'add_time' : '@date("yyyy-MM-dd")',
+        'click' : '@integer(0, 999)',
+        'content' : '@cparagraph(2, 6)',
+        'title' : '@ctitle(3, 10)',
+    })
+} 
+
 const res = {
     page1,
     mockdata1,
     mockImageData,
+    mockImgInfo,
 }
 
 export default res 

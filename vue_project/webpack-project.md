@@ -71,4 +71,10 @@ img[lazy=loading] {
 	</li>
 </ul>
 
-
+17.图片详情页面的制作:
+改造路由的时候需要修改tag,否则样式变了 router.js中修改匹配的规则/xxx/?id
+id: this.$route.params.id ////从url的信息中获取id
+mock图片详情的数据并显示在页面上
+*mockjs中拦截带参数的url,在mock中填入的rurl可以填入正则表达式
+/\/goods\/\d+/ 使用正则表达式的时候不需要加入引号
+表示/goods/xx xx处为一个或者多个数字

@@ -28,13 +28,13 @@
 			</div>
 			<!-- 图片列表区域 -->
 			<ul class="photolist">
-				<li v-for="item in imgdatalist" :key="item.id" >
+				<router-link v-for="item in imgdatalist" :key="item.id" :to="'/home/imgInfo/' + item.id" tag="li">
 					<img v-lazy="item.imgdataurl">
 					<div class="info">
 						<h1 class="info-title">{{ item.title }}</h1>
 						<div class="info-body">{{ item.abtract }}</div>
 					</div>
-				</li>
+				</router-link>
 			</ul>
 		</div>
 </template>
@@ -68,7 +68,7 @@ export default {
 				this.imgdatalist.forEach((item,index)=>{
 					this.imgdatalist[index].imgdataurl = this.imgUrlList[index]
 				})
-				console.log(this.imgdatalist);
+				// console.log(this.imgdatalist);
 			},err=>{
 				Toast("获取图片列表失败")
 			})
