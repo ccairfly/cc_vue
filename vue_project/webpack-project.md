@@ -78,3 +78,12 @@ mock图片详情的数据并显示在页面上
 *mockjs中拦截带参数的url,在mock中填入的rurl可以填入正则表达式
 /\/goods\/\d+/ 使用正则表达式的时候不需要加入引号
 表示/goods/xx xx处为一个或者多个数字
+
+18.图片详情页面样式的美化
+左右布局,使用最多的盒子模型,
+display: flex;
+justify-content:space-between;
+*评论子组件的加入
+import comment from '/xxx.vue'
+注册子组件 :components节点中增加
+在页面中标签的方式引用子组件
