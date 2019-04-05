@@ -18,6 +18,22 @@ import router from "./js/router.js"
 // 引入mui和mint-ui的样式
 import "../lib/mui/css/mui.min.css"
 import "../lib/mui/css/icons-extra.css"
+//导入图片预览插件
+import VuePreview from 'vue-preview'
+
+// Vue.use(VuePreview)
+
+// with parameters install
+Vue.use(VuePreview, {
+    mainClass: 'pswp--minimal--dark',
+    barsSize: {top: 0, bottom: 0},
+    captionEl: false,
+    fullscreenEl: true,
+    shareEl: false,
+    bgOpacity: 0.85,
+    tapToClose: true,
+    tapToToggleControls: false
+})
 
 require('./mock/mockIndex')
 

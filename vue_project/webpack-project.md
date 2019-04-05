@@ -87,3 +87,10 @@ justify-content:space-between;
 import comment from '/xxx.vue'
 注册子组件 :components节点中增加
 在页面中标签的方式引用子组件
+
+19.缩略图的制作vue-preview
+安装项目运行依赖包npm i vue-preview -S
+main.js中导入包
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+src msrc w 和 h 属性必须要有

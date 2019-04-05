@@ -18,6 +18,6 @@ Mock.mock(/\/getImgInfo\/\d+/,'get',()=>{
     return mydata.mockImgInfo()
 });
 
-// Mock.mock(/\/getImgInfo\/[0-9]+/,'get',()=>{
-//     return mydata.mockImgInfo
-// });
+Mock.mock(/\/getImgThumb\/[0-9]+/,'get',()=>{
+    return mydata.mockImgSmall
+});
