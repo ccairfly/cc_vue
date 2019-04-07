@@ -98,7 +98,9 @@ src msrc w 和 h 属性必须要有
 20.商品列表页面基本结构
 *首先:安装对scss的支持:安装node-sass和sass-loader -S
 在webpack.config中添加处理scss的loader { test : /\.scss$/, use : [{loader:"style-loader"},{loader:"css-loader"},{loader:"sass-loader"}] }
-*制作商品列表 : 经典两列布局
-
-
+*制作商品列表 : 经典两列布局,使用flex布局,flex-wrap,在必要的时候拆行
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+*完成商品列表样式的制作,主要理解css3中的流式布局
 
