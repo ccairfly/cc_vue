@@ -28,7 +28,8 @@ module.exports = {
         //new 一个html-webpack-plugin插件的配置对象
         new htmlWebpackPlugin({
             template : path.join(__dirname,"./src/index.html"),
-            filename : "index.html"
+            filename : "index.html",
+            favicon: path.resolve('./src/favicon.ico') 
         }),
         // make sure to include the plugin for the magic
         new VueLoaderPlugin()
