@@ -94,3 +94,11 @@ main.js中导入包
 import VuePreview from 'vue-preview'
 Vue.use(VuePreview)
 src msrc w 和 h 属性必须要有
+
+20.商品列表页面基本结构
+*首先:安装对scss的支持:安装node-sass和sass-loader -S
+在webpack.config中添加处理scss的loader { test : /\.scss$/, use : [{loader:"style-loader"},{loader:"css-loader"},{loader:"sass-loader"}] }
+*制作商品列表 : 经典两列布局
+
+
+
