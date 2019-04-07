@@ -104,3 +104,7 @@ flex-wrap: wrap;
 justify-content: space-between;
 *完成商品列表样式的制作,主要理解css3中的流式布局
 
+21.安卓真机调试 预览项目
+*手机与开发电脑处于同一网络环境中
+*在package.json文件中在dev脚本中添加 --host指令,设置当前电脑的IP地址
+
