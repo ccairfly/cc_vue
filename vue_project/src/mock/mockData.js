@@ -40,6 +40,29 @@ const smallImgUrl = [
     'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554471857158&di=8db43b49bbab0fd00605912da390e3a8&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01b33e55456ceb0000019ae9344d51.jpg',
 ]
 
+const goodsImgUrl = [
+    'https://gw.alicdn.com/bao/uploaded/i2/195639484/TB10J7djTvI8KJjSspjXXcgjXXa_!!0-item_pic.jpg',
+    'https://gw.alicdn.com/bao/uploaded/i3/2114928378/O1CN012BlAi8h1ZmOqytd_!!2114928378.jpg',
+    'https://gw.alicdn.com/bao/uploaded/i1/1951264887/TB2Le6xX1ySBuNjy1zdXXXPxFXa_!!1951264887.jpg',
+    'https://gw.alicdn.com/bao/uploaded/i1/TB1e0L4HpXXXXawXXXXXXXXXXXX_!!0-item_pic.jpg',
+    'https://gw.alicdn.com/bao/uploaded/i4/3050644528/TB2kQ40XkKWBuNjy1zjXXcOypXa_!!3050644528.jpg',
+    'https://gw.alicdn.com/bao/uploaded/i2/124363249/TB20bguahlmpuFjSZPfXXc9iXXa_!!124363249.jpg',
+    'https://gw.alicdn.com/bao/uploaded/i4/1602161069/TB1xD93g5qAXuNjy1XdXXaYcVXa_!!2-item_pic.png',
+    'https://gw.alicdn.com/bao/uploaded/i1/3028112578/TB2p2RLXbKFJuJjSszgXXXVnXXa_!!3028112578.jpg',
+    'https://gw.alicdn.com/bao/uploaded/i4/TB1ODHhPpXXXXbnXpXXXXXXXXXX_!!0-item_pic.jpg',
+    'https://gw.alicdn.com/bao/uploaded/i4/840091576/TB20t05mwvD8KJjSsplXXaIEFXa_!!840091576.jpg',
+    'https://gw.alicdn.com/bao/uploaded/i3/144178740/TB2D33uc90mpuFjSZPiXXbssVXa_!!144178740.jpg',
+    'https://gw.alicdn.com/bao/uploaded/i4/TB18UxiFVXXXXbZXFXXXXXXXXXX_!!0-item_pic.jpg',
+]
+
+const goodsImgUrl2 = [
+    'https://img.alicdn.com/bao/uploaded/i3/1768983454/O1CN01Bq3ox01bNyWd7x8UF_!!0-item_pic.jpg_240x240.jpg',
+    'https://img.alicdn.com/bao/uploaded/i2/1768983454/O1CN01Ib9hlt1bNyWW0nlYi_!!0-item_pic.jpg_240x240.jpg',
+    'https://img.alicdn.com/bao/uploaded/i4/1768983454/O1CN01d89vL71bNyWH2eZDT_!!0-item_pic.jpg_240x240.jpg',
+    'https://img.alicdn.com/bao/uploaded/i4/1768983454/TB2pwZ9p67nBKNjSZLeXXbxCFXa_!!1768983454.jpg_240x240.jpg',
+    'https://gw.alicdn.com/bao/uploaded/TB1_P_EpNTpK1RjSZFKSuu2wXXa.jpg_300x300q75.jpg',
+]
+
 var mockdata1 = Mock.mock({
     code :200,
     'list|1-10': [{
@@ -77,12 +100,31 @@ var mockImgSmall = Mock.mock({
     'slideObj|8' : [{},]
 })
 
+var mockGoodsList = function(args) {
+    var goodslisturl = []
+    if(args == 1)
+        goodslisturl = goodsImgUrl
+    else 
+        goodslisturl = goodsImgUrl2
+    return Mock.mock({
+        goodslisturl ,
+        'goodsData|12' : [{
+            'remain' : '@integer(0, 999)',
+            'price_new' : '@integer(0, 9999)',
+            'price_old' : '@integer(0, 9999)',
+            'title' : '@ctitle(8, 30)',
+        }]
+    })
+}
+
+
 const res = {
     page1,
     mockdata1,
     mockImageData,
     mockImgInfo,
     mockImgSmall,
+    mockGoodsList,
 }
 
 export default res 

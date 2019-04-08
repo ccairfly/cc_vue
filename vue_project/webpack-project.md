@@ -108,3 +108,11 @@ justify-content: space-between;
 *手机与开发电脑处于同一网络环境中
 *在package.json文件中在dev脚本中添加 --host指令,设置当前电脑的IP地址
 
+22.商品列表界面数据的mock和渲染掌握数组方法push和contact,push是添加,contact是合并数组
+
+
+
+
+
+
+

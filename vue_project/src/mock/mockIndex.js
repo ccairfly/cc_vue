@@ -21,3 +21,13 @@ Mock.mock(/\/getImgInfo\/\d+/,'get',()=>{
 Mock.mock(/\/getImgThumb\/[0-9]+/,'get',()=>{
     return mydata.mockImgSmall
 });
+
+Mock.mock(/getGoods\?pageIndex=1/,'get',()=>{
+    // console.log(arguments);
+    return mydata.mockGoodsList(1)
+});
+
+Mock.mock(/getGoods\?pageIndex=2/,'get',()=>{
+    // console.log(arguments);
+    return mydata.mockGoodsList(2)
+});

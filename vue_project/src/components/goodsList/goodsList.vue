@@ -1,62 +1,67 @@
 <template>
     <div class="goods-list-box">
-        <div class="goods-item">
+        <div class="goods-item" v-for="item in goodsData" :key="item.url">
             <img 
-            src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/3056162727/O1CN01xKEBwX1W10ZP7I5nl_!!0-item_pic.jpg_360x360Q90.jpg_.webp" 
+            :src='item.url'
             alt="">
             <div>
-                <h3 class="goods-title">戴尔专业笔记本电脑 灵越5000 全新上市</h3>
+                <h3 class="goods-title">{{ item.title }}</h3>
                 <div class="goods-info">
                     <p class="price">
-                        <span class="new">￥4699</span>
-                        <span class="old">￥5199</span>
+                        <span class="new">￥{{ item.price_new }}</span>
+                        <span class="old">￥{{ item.price_old }}</span>
                     </p>
                     <p class="sell">
                         <span>热卖中</span>
-                        <span>剩余60件</span>
+                        <span>剩余{{ item.remain }}件</span>
                     </p>
                 </div>
             </div>
             
         </div>
-        <div class="goods-item">
-            <img 
-            src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/3056162727/O1CN01xKEBwX1W10ZP7I5nl_!!0-item_pic.jpg_360x360Q90.jpg_.webp" 
-            alt="">
-            <h3 class="goods-title">戴尔专业笔记本电脑 灵越5000 全新上市 超强性能 吃鸡LOL运行流畅不卡顿 WULI cc推荐</h3>
-            <div class="goods-info">
-                <p class="price">
-                    <span class="new">￥4699</span>
-                    <span class="old">￥5199</span>
-                </p>
-                <p class="sell">
-                    <span>热卖中</span>
-                    <span>剩余60件</span>
-                </p>
-            </div>
-        </div> 
-        <div class="goods-item">
-            <img 
-            src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/3056162727/O1CN01xKEBwX1W10ZP7I5nl_!!0-item_pic.jpg_360x360Q90.jpg_.webp" 
-            alt="">
-            <h3 class="goods-title">戴尔专业笔记本电脑 灵越5000 全新上市</h3>
-            <div class="goods-info">
-                <p class="price">
-                    <span class="new">￥4699</span>
-                    <span class="old">￥5199</span>
-                </p>
-                <p class="sell">
-                    <span>热卖中</span>
-                    <span>剩余60件</span>
-                </p>
-            </div>
-        </div>
+
+        <mt-button type="danger" size="large" @click="getMore">点击加载更多</mt-button>
     </div>
 </template>
 
 <script>
 export default {
-    
+    data(){
+        return { 
+            pageIndex : 1 , //分页的页数
+            goodsData : [],
+            goodsData_temp : []
+        }
+    },
+    created(){
+        this.getGoodsList()
+    },
+    methods:{
+        getGoodsList(){
+            this.$http.get('http://127.0.0.1/getGoods?pageIndex=' + this.pageIndex).then(res=>{
+                // console.log(res.body);
+                this.goodsData_temp = res.body.goodsData
+                res.body.goodslisturl.forEach((item,index) => {
+                    this.goodsData_temp[index].url = item
+                });
+                this.goodsData_temp.forEach((item,index) => {
+                    if((item.url !== '')&& (item.url != undefined)) {
+                        this.goodsData.push(item)
+                    }
+                });
+                console.log(this.goodsData);
+            },err=>{
+
+            })
+        },
+        getMore(){
+            if(this.pageIndex > 1)
+                return 
+            if(this.pageIndex == 1)
+                this.pageIndex = 2
+            this.getGoodsList()
+        },
+    }
 }
 </script>
 
