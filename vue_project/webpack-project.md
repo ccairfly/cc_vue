@@ -125,6 +125,14 @@ justify-content: space-between;
 使用封装好的组件三步走: 引包import , 将组件挂载进components节点中, 在父组件中使用标签的方式使用
 需要传入的值做成一个属性 props["xxx"] 父组件中 绑定该属性,并向其传递值 :xxx="aaa"
 
+25.商品详情页面的制作
+使用MUI 中的数字输入框完成,导入import mui from "../../../lib/mui/js/mui.min.js"js包
+在mounted的时候初始化数字输入组件mui("mui-numbox").numbox()
+mui-card-footer和header默认为flex布局,按钮都在同一行,需要display:block
+
+
+
+
 
 
 

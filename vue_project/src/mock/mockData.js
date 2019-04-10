@@ -94,9 +94,11 @@ var mockImageData = Mock.mock({
 
 var mockGoodsInfoImg = Mock.mock({
     'imgurl' : goodsInfoImgUrl,
+    'guid' : '@guid',
     'click' : '@integer(0, 999)',
-    'content' : '@cparagraph(2, 6)',
+    'add_time' : '@date("yyyy-MM-dd")',
     'title' : '@ctitle(3, 10)',
+    'price_now' : '@integer(1888, 9999)'
 })
 
 var mockImgInfo = function() {
@@ -104,7 +106,7 @@ var mockImgInfo = function() {
         'add_time' : '@date("yyyy-MM-dd")',
         'click' : '@integer(0, 999)',
         'content' : '@cparagraph(2, 6)',
-        'title' : '@ctitle(3, 10)',
+        'title' : '@ctitle(3, 8)',
     })
 } 
 
