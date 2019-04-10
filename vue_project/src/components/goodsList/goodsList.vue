@@ -1,6 +1,6 @@
 <template>
     <div class="goods-list-box">
-        <div class="goods-item" v-for="item in goodsData" :key="item.url">
+        <div class="goods-item" v-for="item in goodsData" :key="item.url" @click="gotoGoodsInfo(item.id)">
             <img 
             :src='item.url'
             alt="">
@@ -49,7 +49,7 @@ export default {
                         this.goodsData.push(item)
                     }
                 });
-                console.log(this.goodsData);
+                // console.log(this.goodsData);
             },err=>{
 
             })
@@ -60,6 +60,9 @@ export default {
             if(this.pageIndex == 1)
                 this.pageIndex = 2
             this.getGoodsList()
+        },
+        gotoGoodsInfo(uid){
+            this.$router.push({ name: 'goodsInfo', params: { id: uid }})
         },
     }
 }

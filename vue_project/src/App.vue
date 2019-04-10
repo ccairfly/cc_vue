@@ -1,9 +1,9 @@
 <template>
         <div class="app-container">
             <mt-header fixed title="cc vue project">
-                <router-link to="/" slot="left">
-                <mt-button icon="back">返回</mt-button>
-                </router-link>
+                <a slot="left">
+                <mt-button icon="back" @click="backHandler">返回</mt-button>
+                </a>
             </mt-header>
             
             <router-view></router-view>
@@ -45,6 +45,9 @@ export default {
         show(){
             console.log("this is App.vue show");
         },
+        backHandler() {
+            this.$router.back()
+        }
     },
 }
 </script>
