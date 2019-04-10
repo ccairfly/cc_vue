@@ -110,8 +110,20 @@ justify-content: space-between;
 
 22.商品列表界面数据的mock和渲染掌握数组方法push和contact,push是添加,contact是合并数组
 
+23.编程式导航
+在网页中有两种跳转方式:
+方式1:使用a标签的跳转方法
+方法2:使用window.location.href的形式实现编程式导航
+使用编程式导航需要区分this.$route和this.$router
+*掌握this.$router.push()  this.$router.go() this.$router.forward() this.$router.back()方法
+*商品列表点击进入商品详情页面使用编程式导航制作
 
-
+24.卡片视图布局
+使用MUI的卡片视图cardview card
+页眉 信息体 页脚
+*抽离轮播图组件	封装组件内部使用props["xxxx"] , 即可使用xxx渲染数据,父组件在使用封装好的组件的时候需要传入xxx数据
+使用封装好的组件三步走: 引包import , 将组件挂载进components节点中, 在父组件中使用标签的方式使用
+需要传入的值做成一个属性 props["xxx"] 父组件中 绑定该属性,并向其传递值 :xxx="aaa"
 
 
 

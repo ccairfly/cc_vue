@@ -63,6 +63,13 @@ const goodsImgUrl2 = [
     'https://gw.alicdn.com/bao/uploaded/TB1_P_EpNTpK1RjSZFKSuu2wXXa.jpg_300x300q75.jpg',
 ]
 
+const goodsInfoImgUrl = [
+    {url:'https://pics0.baidu.com/feed/d53f8794a4c27d1e2022d5b97be3086addc43806.jpeg?token=f190ea65fcb218ecf3c209a56e461e37&s=2B026480F1FF102E5D96E9D10300108B'},
+    {url:'https://pics1.baidu.com/feed/023b5bb5c9ea15cebeb91eb9d6369ff73b87b2e2.jpeg?token=cb4d562abcdab06692ace1f2fc7501fb&s=25F2E4224F2027078A55B8830300A0C0'},
+    {url:'https://pics2.baidu.com/feed/d043ad4bd11373f05f9456fec439eefffaed04e6.jpeg?token=9040608aac199c25416cd5286f65c4f2&s=461084297434238E99BAD5C9030020A1'},
+    {url:'https://pics7.baidu.com/feed/c995d143ad4bd11384fc737b3a99010b4bfb0505.jpeg?token=32664480620162538724b5d5ff5761c4&s=5B95B0AAC91708CA2E11212F0300C0C2'},
+]
+
 var mockdata1 = Mock.mock({
     code :200,
     'list|1-10': [{
@@ -85,6 +92,13 @@ var mockImageData = Mock.mock({
     }]
 })
 
+var mockGoodsInfoImg = Mock.mock({
+    'imgurl' : goodsInfoImgUrl,
+    'click' : '@integer(0, 999)',
+    'content' : '@cparagraph(2, 6)',
+    'title' : '@ctitle(3, 10)',
+})
+
 var mockImgInfo = function() {
     return Mock.mock({
         'add_time' : '@date("yyyy-MM-dd")',
@@ -102,13 +116,18 @@ var mockImgSmall = Mock.mock({
 
 var mockGoodsList = function(args) {
     var goodslisturl = []
-    if(args == 1)
+    var init_data = 0
+    if(args == 1){
         goodslisturl = goodsImgUrl
-    else 
+    }
+    else {
         goodslisturl = goodsImgUrl2
+        init_data = 12
+    }
     return Mock.mock({
         goodslisturl ,
         'goodsData|12' : [{
+            'id|+1' : init_data ,
             'remain' : '@integer(0, 999)',
             'price_new' : '@integer(0, 9999)',
             'price_old' : '@integer(0, 9999)',
@@ -125,6 +144,7 @@ const res = {
     mockImgInfo,
     mockImgSmall,
     mockGoodsList,
+    mockGoodsInfoImg,
 }
 
 export default res 
