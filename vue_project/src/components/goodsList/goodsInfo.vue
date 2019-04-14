@@ -60,8 +60,8 @@
                 </div>
             <div class="mui-card-footer">
                 <div class="bottom-btn">
-                    <mt-button type="danger" size="large">查看详情</mt-button>
-                    <mt-button type="primary" size="large">商品评论</mt-button>
+                    <mt-button type="danger" size="large" @click="gotoGoodsDesc(id)">查看详情</mt-button>
+                    <mt-button type="primary" size="large" @click="gotoGoodsComment(id)">商品评论</mt-button>
                 </div>
                 
             </div>
@@ -99,6 +99,12 @@ export default {
 
             })
         },
+        gotoGoodsDesc(gid) {
+            this.$router.push({ name: 'goodsDesc', params: { gid }})
+        },
+        gotoGoodsComment(gid) {
+            this.$router.push({ name: 'goodsComment', params: { gid }})
+        }
     }
 }
 </script>

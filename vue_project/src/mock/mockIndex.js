@@ -35,3 +35,7 @@ Mock.mock(/getGoods\?pageIndex=2/,'get',()=>{
 Mock.mock(/\/getGoodsInfoImg\/[0-9]+/,'get',()=>{
     return mydata.mockGoodsInfoImg
 });
+
+Mock.mock(/\/getGoodsDesc\/[0-9]+/,'get',()=>{
+    return mydata.mockdata1
+});

@@ -130,6 +130,9 @@ justify-content: space-between;
 在mounted的时候初始化数字输入组件mui("mui-numbox").numbox()
 mui-card-footer和header默认为flex布局,按钮都在同一行,需要display:block
 
+26.商品详情页面实现编程式导航跳转
+将商品详情页面的详情介绍和商品评论作为编程式导航跳转
+完成商品详情页面的渲染和评论页面组件的存放
 
 
 

@@ -11,6 +11,9 @@ import imgShareHome from "../components/imgShare/imgShareHome.vue"
 import imgInfo from "../components/imgShare/imgInfo.vue"
 import goodsList from "../components/goodsList/goodsList.vue"
 import goodsInfo from "../components/goodsList/goodsInfo.vue"
+import goodsDesc from "../components/goodsList/goodsDesc.vue"
+import goodsComment from "../components/goodsList/goodsComment.vue"
+
 
 var router = new VueRouter({
     routes : [
@@ -25,6 +28,8 @@ var router = new VueRouter({
         { path: '/home/imgInfo/:id', component:imgInfo },
         { path: '/goodsList', component:goodsList },
         { path: '/goodsInfo/:id', component:goodsInfo , name : 'goodsInfo'},
+        { path: '/goodsComment/:id', component:goodsComment , name : 'goodsComment'},
+        { path: '/goodsDesc/:id', component:goodsDesc , name : 'goodsDesc'},
         // { path: '/account', component : account ,children : [
         // ]},
     ],
