@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cc component demo</title>
+    <script src="./vue_2.5.22.js"></script>
+    <script src="./vue-resource-v1.5.1.js"></script>
+    <link rel="stylesheet" href="./bootstrap3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <br>
+    <div id="app">
+        <div class="form-inline">
+            <button class="btn btn-success" @click="getInfoHandler">my button</button>
+            <mycom></mycom>
+            <mycom1></mycom1>
+            <mycom2></mycom2><p>{{msg}}</p>
+        </div>
+    </div>  
+    
+    <div id="app2">
+        <h3>----------- this is app2 ---------------</h3>
+        <mycom></mycom>
+        <mycom1></mycom1>
+        {{msg}}
+        <!-- app1的私有组件,app2是看不见 -->
+        <!-- <mycom2></mycom2> -->
+    </div>
+
+    <template id="cc-template">
+        <div>
+            <h3>this is cc global component </h3>
+        </div>
+    </template>
+
+    <template id="mytem2">
+        <div>
+            <button class="btn btn-success">test button</button>
+            <h3 class="bg-success">this is app1 template component</h3>
+            <h3> {{ msg }}</h3>
+        </div>
+    </template>
+    <script>
+
+        //在内部定义的全局组件
+        Vue.component("mycom",{
+            template:'<input type="text" class="form-control" placeholder="cc first component demo" v-model="id" >'
+        })
+
+        Vue.component("mycom1",{
+            template:'#cc-template'
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg : "vue global msg"
+            },
+
+            methods: {
+
+            },
+
+            components:{
+                mycom2:{
+                    template:'#mytem2',
+                    data:function(){
+                        return {
+                            msg : "mycom2 msg "
+                        }
+                    }
+                }
+            },
+        })
+
+        var vm2 = new Vue({
+            el: "#app2",
+            data: {
+                
+            },
+            methods: {
+                
+            },
+        })
+
+    </script>
+</body>
+</html>

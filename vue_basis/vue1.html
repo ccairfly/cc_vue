@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+</head>
+<style>
+    [cloak] {
+        display: none;
+    }
+    .inner {
+        width: 200px;
+        height: 200px;
+        background-color: yellowgreen;
+    }
+</style>
+<body>
+    <script src="vue_2.5.22.js"></script>
+    <div id="cc1-div" v-cloak>
+        {{mess}}
+        <br>
+        {{msg}}
+        <div v-text="msg">======</div>
+        <input type="text" v-model="mess" >
+        <div class="inner" @click="innerHandler">
+            <input type="button" value="我是一个按钮" @click.prevent="btnHandler">
+            <div><a href="https://www.baidu.com/" @click.prevent>有事先去问百度</a></div> 
+        </div> 
+        <p v-for="(i,num) in obj">{{i}}----{{num}}</p>
+
+        <h3 v-if="h3_flag">我出现啦</h3>
+        <h3 v-show="h3_flag">我出现啦2</h3>
+        <input type="button" :value="show" @click="btn2Hanmdler">
+    </div>
+    
+    
+    <script>
+        var vm = new Vue({
+            el  : "#cc1-div",
+            data : {
+                mess:"hello world this is my vue",
+                msg: "happy new year",
+                list:[1,2,3,4,4,5,6,6,9,10,11],
+                list2:[2,4,6,8,8],
+                obj:{
+                    name : "张三丰",
+                    age : 19,
+                    love : "play"
+                },
+                h3_flag:true,
+                show:"隐藏"
+            },
+            methods : {
+                innerHandler:function(){
+                    console.log("触发了inner事件")
+                },
+                btnHandler:function(){
+                    console.log("触发了按钮事件")
+                },
+                btn2Hanmdler:function(){
+                    if(this.show == "显示"){
+                        this.show="隐藏"
+                        this.h3_flag=true
+                    }
+                        
+                    else{
+                        this.show="显示"
+                        this.h3_flag=false
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

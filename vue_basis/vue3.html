@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cc test vue-resource</title>
+    <script src="./vue_2.5.22.js"></script>
+    <script src="./vue-resource-v1.5.1.js"></script>
+    <link rel="stylesheet" href="./bootstrap3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <h2>{{ hello }}</h2>
+        <br>
+        <button class="btn btn-success" @click="getInfoHandler">发起get请求</button>
+        <button class="btn btn-success" @click="postInfoHandler">发起post请求</button>
+    </div>  
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                hello:'hello world --cc'
+            },
+            methods: {
+                getInfoHandler(){
+                    this.$http.get('https://www.easy-mock.com/mock/5c6ad911d8bc8b31033c36cc/example/proxy').then((res)=>{
+                        console.log(res);
+                        
+                    })
+                },
+                postInfoHandler(){
+                    this.$http.post('https://www.easy-mock.com/mock/5c6ad911d8bc8b31033c36cc/example/upload',{},{}).then((res)=>{
+                        console.log(res);
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+</html>

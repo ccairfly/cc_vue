@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue品牌列表案例</title>
+    <script src="./vue_2.5.22.js"></script>
+    <link rel="stylesheet" href="./bootstrap3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <br>
+        <div class="form-inline">
+                <div class="form-group">
+                  <label>  ID</label>
+                  <input type="text" class="form-control" placeholder="请输入数字ID" v-model="id" >
+                </div>
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" placeholder="输入品牌名称" v-model="name" @keyup.enter="addHandler">
+                </div>
+                <button class="btn btn-success" @click="addHandler">添加</button>
+                <label>搜索：</label>
+                <input type="text" class="form-control" placeholder="搜索名称关键字" v-model="keywords" v-focus>
+            </div>
+        <br>
+        <table class="table table-hover table-striped table-hover">
+            <thead>
+                <tr class="success">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Time</th>
+                    <th>Opt</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in search(keywords)">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.time | dateFilter}}</td>
+                    <td><button class="btn btn-primary btn-xs">修改</button> <button class="btn btn-danger btn-xs" @click="deleteHandler(item.id)">删除</button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    <script>
+        //自定义过滤器，用于文本格式化'|'
+        Vue.filter("dateFilter",function(value){
+            var year = value.getFullYear()
+            var month = value.getMonth() + 1
+            var day = value.getDate()
+            var hour = value.getHours()
+            var min = value.getMinutes().toString().padStart(2,"0")
+            var sec = value.getSeconds().toString().padStart(2,"0")
+            return ( year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec )
+        })
+        
+        //自定义
+        Vue.directive('focus',{
+            bind:function(){
+
+            },
+            update:function(){
+
+            },
+            inserted:function(el){
+                el.focus()
+            }
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                id:'',
+                name:'',
+                list:[
+                    { id:1 , name:"宝马", time:new Date()},
+                    { id:2 , name:"奔驰", time:new Date()},
+                    { id:3 , name:"奥迪", time:new Date()},
+                    { id:4 , name:"保时捷", time:new Date()},
+                ],
+                keywords:''
+            },
+            methods: {
+                addHandler(){
+                    if((this.id=='')||(this.name==''))
+                        return;
+                    var car = {id:this.id,name:this.name,time:new Date()}
+                    this.list.push(car)
+                    this.id=''
+                    this.name=''
+                },
+
+                //根据ID删除list中的数据
+                deleteHandler(index){
+                    //1.根据ID找到list中的索引---findIndex方法
+                    var listNum = this.list.findIndex((item)=>{
+                        if(item.id == index)
+                            return true
+                    })
+                    console.log(listNum)
+                    //2.使用数组的splice方法
+                    this.list.splice(listNum,1)
+                },
+
+                search(keyword){
+                    //根据关键字，进行对数据的搜索
+                    //并且返回new list 
+                    var newList=[]
+                    //forEach方法遍历数组
+                    this.list.forEach(element => {
+                        if(element.name.indexOf(keyword) != -1 ){
+                            newList.push(element)
+                        }
+                    });
+                    return newList
+                }
+            }
+        })
+    </script>
+</body>
+</html>
