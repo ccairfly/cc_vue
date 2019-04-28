@@ -1,5 +1,12 @@
 <template>
     <div class="goods-container">
+        <transition
+        @before-enter="ballBeforeEnter"
+        @enter="ballEnter"
+        @after-enter="ballAfterEnter"
+        >
+            <div class="goodsball" v-show="ballVisible" ref="ball"></div>
+        </transition>
         <!-- 商品轮播图区域 -->
         <div class="mui-card">
                 <div class="mui-card-content">
@@ -32,7 +39,7 @@
                         </div>
 
                         <div>
-                            <mt-button type="danger" size="small">加入购物车</mt-button>&nbsp;&nbsp;&nbsp;
+                            <mt-button type="danger" size="small" @click="addToShopCart">加入购物车</mt-button>&nbsp;&nbsp;&nbsp;
                             <mt-button type="primary" size="small">立即购买</mt-button>
                         </div>
                         
@@ -77,7 +84,8 @@ export default {
         return {
             id : this.$route.params.id,
             thumbImg : [],
-            infoData : {}
+            infoData : {},
+            ballVisible : false,
         }
     },
     created() {
@@ -104,6 +112,26 @@ export default {
         },
         gotoGoodsComment(gid) {
             this.$router.push({ name: 'goodsComment', params: { gid }})
+        },
+        addToShopCart(){
+            this.ballVisible = true
+        },
+        ballBeforeEnter(el){
+            el.style.transform = "translate(0,0)"
+        },
+        ballEnter(el,done){
+            const ballPosition = this.$refs.ball.getBoundingClientRect()
+            // console.log(ballPosition);
+            const badgePosition = document.getElementById("shopCartBadge").getBoundingClientRect()
+            const transformTop = badgePosition.top - ballPosition.top            
+            const transformLeft = badgePosition.left - ballPosition.left
+            el.offsetWidth;
+            el.style.transform = `translate(${transformLeft}px,${transformTop}px)`
+            el.style.transition = "all 1s cubic-bezier(.29,-0.2,1,.67)"
+            done()
+        },
+        ballAfterEnter(el){
+            this.ballVisible = false
         }
     }
 }
@@ -111,6 +139,7 @@ export default {
 
 <style lang="scss">
 .goods-container {
+    // position: relative;
     background-color: #eee;
     .num-box {
         margin: 10px auto;
@@ -125,5 +154,15 @@ export default {
             margin: 10px 0;
         }
     }
+    .goodsball {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        z-index: 100;
+        top:440px;
+        left: 148px;
+    }   
 }
 </style>

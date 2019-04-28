@@ -134,6 +134,23 @@ mui-card-footer和header默认为flex布局,按钮都在同一行,需要display:
 将商品详情页面的详情介绍和商品评论作为编程式导航跳转
 完成商品详情页面的渲染和评论页面组件的存放
 
+27.实现购物车小球和小球动画
+*小球位移,将ball的div使用transition包起来,定义三个动画钩子函数@before-enter @enter @after-enter
+*将三个钩子函数的实现放在methods中
+*不同分辨率和移动的时候小球的位移:动态获取位移到的位置的值
+*获取小球在页面中的位置 ref 加在普通的元素上，用this.$ref.name 获取到的是dom元素
+*getBoundingClientRect用于获取某个元素相对于视窗的位置集合
+const ballPosition = this.$refs.ball.getBoundingClientRect()
+// console.log(ballPosition);
+const badgePosition = document.getElementById("shopCartBadge").getBoundingClientRect()
+const transformTop = badgePosition.top - ballPosition.top            
+const transformLeft = badgePosition.left - ballPosition.left
+el.offsetWidth;
+el.style.transform = `translate(${transformLeft}px,${transformTop}px)`
+el.style.transition = "all 1s cubic-bezier(.29,-0.2,1,.67)"
+
+
+
 
 
 
