@@ -149,7 +149,7 @@ el.offsetWidth;
 el.style.transform = `translate(${transformLeft}px,${transformTop}px)`
 el.style.transition = "all 1s cubic-bezier(.29,-0.2,1,.67)"
 
-
+28.子组件向父组件传值,传购买数量
 
 
 
