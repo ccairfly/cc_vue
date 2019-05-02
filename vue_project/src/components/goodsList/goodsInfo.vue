@@ -25,7 +25,7 @@
                             <span class="price_old">市场价 : <del>¥9999</del></span>&nbsp;&nbsp;&nbsp;<span>现价 : <span class="price_new">¥{{ infoData.price_now }}</span></span>
                         </div>
 
-                        <goodsNumBox @sendNum="getGoodsCount(count)"></goodsNumBox>
+                        <goodsNumBox @sendNum="getGoodsCount" :maxCount="infoData.click"></goodsNumBox>
 
                         <div>
                             <mt-button type="danger" size="small" @click="addToShopCart">加入购物车</mt-button>&nbsp;&nbsp;&nbsp;
@@ -76,6 +76,7 @@ export default {
             infoData : {},
             ballVisible : false,
             shopCartLock : false,
+            goodsCount : 1,
         }
     },
     created() {
@@ -112,7 +113,6 @@ export default {
         },
         ballEnter(el,done){
             const ballPosition = this.$refs.ball.getBoundingClientRect()
-            // console.log(ballPosition);
             const badgePosition = document.getElementById("shopCartBadge").getBoundingClientRect()
             const transformTop = badgePosition.top - ballPosition.top            
             const transformLeft = badgePosition.left - ballPosition.left
@@ -126,7 +126,8 @@ export default {
             this.shopCartLock = false          
         },
         getGoodsCount(count){
-
+            // console.log("这是父组件的方法,子组件传递给父组件的值是:" + count);
+            this.goodsCount = count
         },
     }
 }

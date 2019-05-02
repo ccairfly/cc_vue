@@ -4,10 +4,10 @@
         <span>
             <div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' :data-numbox-max='maxCount'>
                 <!-- "-"按钮，点击可减小当前数值 -->
-                <button class="mui-btn mui-numbox-btn-minus" type="button" @click="downHandler">-</button>
-                <input class="mui-numbox-input" type="number" v-model="goodsCount"/>
+                <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                <input class="mui-numbox-input" type="number" value="1" @change="valueChange" ref="numtext"/>
                 <!-- "+"按钮，点击可增大当前数值 -->
-                <button class="mui-btn mui-numbox-btn-plus" type="button" @click="upHandler">+</button>
+                <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
             </div>
         </span>
     </div>
@@ -19,15 +19,19 @@ export default {
     data(){
         return {
             goodsCount : 1,
-            maxCount : 10,
         }
     },
+    props:["maxCount"],
     methods : {
-        upHandler(){
-            this.goodsCount++
-        },
-        downHandler(){
-            this.goodsCount--
+        // upHandler(){
+        //     this.goodsCount++
+        // },
+        // downHandler(){
+        //     this.goodsCount--
+        // },
+        valueChange(){
+            // console.log(this.$refs.numbox.value);
+            this.$emit("sendNum",parseInt(this.$refs.numtext.value))
         }
     },
     created(){
@@ -35,12 +39,13 @@ export default {
     },
     mounted(){
         mui(".mui-numbox").numbox()
+
     },
     watch: {
-        goodsCount(){
-            console.log("数据变化");
-            
-        }
+        maxCount:function(newValue,oldValue){
+            // console.log("数据变化了:new" + newValue + ",,old" + oldValue);
+            mui(".mui-numbox").numbox().setOption('max',newValue)
+        },
     },
 }   
 </script>

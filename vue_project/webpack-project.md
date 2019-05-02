@@ -150,9 +150,18 @@ el.style.transform = `translate(${transformLeft}px,${transformTop}px)`
 el.style.transition = "all 1s cubic-bezier(.29,-0.2,1,.67)"
 
 28.子组件向父组件传值,传购买数量
+事件调用机制:父组件向子组件传递一个方法,子组件调用这个方法,并把数据作为参数 传递给父组件
+父组件在子组件中绑定事件:@sendNum="getGoodsCount
+父组件方法:getGoodsCount(count){
+console.log("这是父组件的方法,子组件传递给父组件的值是:" + count);
+},
+子组件通过this.$emit,调用方法,然后把值传递:
+this.$emit("sendNum",this.value)
 
-
-
+29.父组件向子组件传递数据,在子组件中定义props:["xxx"],
+父组件引用时候绑定属性的值,:xxx="123" , 则在子组件xxx中可以获取到数据123
+使用JS API语法设置numbox的最大值,
+mounted的时候还没能拿到max值,所以只能使用watch监听max值,当max有新值时候使用API语法重新设置max值
 
 
 
