@@ -9,6 +9,8 @@ import Vue from "vue"
 
 import App from "./App.vue"
 
+//导入vuex
+import Vuex from 'vuex'
 // 导入vue-resource
 import VueResource from "vue-resource"
 //导入vue-router之后需要使用Vue.use创建出来
@@ -50,8 +52,21 @@ import mintUI from 'mint-ui'
 Vue.use(mintUI)
 import 'mint-ui/lib/style.css'
 
+Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(VueResource)
+
+const store = new Vuex.Store({
+    // state可以理解为组件中的data
+    state: {
+        goodsCount: 0
+    },
+    mutations: {
+        saveGoodsCount(state,args){
+            state.goodsCount = args  
+        }
+    }
+})
 
 var vm = new Vue({
     el : "#app",
@@ -67,4 +82,5 @@ var vm = new Vue({
         return createElements(App)   
     },
     router,
+    store,
 })

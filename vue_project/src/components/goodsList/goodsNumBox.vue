@@ -18,7 +18,7 @@ import mui from "../../../lib/mui/js/mui.min.js"
 export default {
     data(){
         return {
-            goodsCount : 1,
+            // goodsCount : 1,
         }
     },
     props:["maxCount"],

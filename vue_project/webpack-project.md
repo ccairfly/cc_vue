@@ -138,7 +138,7 @@ mui-card-footer和header默认为flex布局,按钮都在同一行,需要display:
 *小球位移,将ball的div使用transition包起来,定义三个动画钩子函数@before-enter @enter @after-enter
 *将三个钩子函数的实现放在methods中
 *不同分辨率和移动的时候小球的位移:动态获取位移到的位置的值
-*获取小球在页面中的位置 ref 加在普通的元素上，用this.$ref.name 获取到的是dom元素
+*获取小球在页面中的位置 ref 加在普通的元素上，用this.$refs.name 获取到的是dom元素
 *getBoundingClientRect用于获取某个元素相对于视窗的位置集合
 const ballPosition = this.$refs.ball.getBoundingClientRect()
 // console.log(ballPosition);
@@ -163,5 +163,23 @@ this.$emit("sendNum",this.value)
 使用JS API语法设置numbox的最大值,
 mounted的时候还没能拿到max值,所以只能使用watch监听max值,当max有新值时候使用API语法重新设置max值
 
-
+30.其他组件间传值:vuex引入
+goodsinfo拿到传递来的值的时候加入购物车
+*安装vuex三部曲--> 项目依赖: npm i vuex -S 引入:import Vuex from 'vuex' 使用:Vue.use(Vuex)
+*简单使用vuex , 将store数据显示到组件中:
+显示创建数据存储对象 全局store仓库
+const store = new Vuex.Store({
+    state: {
+        count: 0
+    },
+    mutations: {
+        increment (state) {
+        state.count++
+        }
+    }
+})
+state可以理解为组件中的data,专门用来存储数据
+*将vuex创建的store挂载到VM实例上 store:store,-->可以简写store,只要挂载到VM上,任何组件都可以使用$store来存取数据
+mutations里面存放着方法,可以理解为仓库管理员,需要操作仓库的数据则使用this.$store.commit("方法名")来操作仓库中store数据
+commit提交mutation最多只支持两个参数,参数1是state状态,参数2是通过commit提交来的参数
 

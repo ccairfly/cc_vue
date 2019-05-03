@@ -102,9 +102,12 @@ export default {
         gotoGoodsComment(gid) {
             this.$router.push({ name: 'goodsComment', params: { gid }})
         },
+        // 加入购物车
         addToShopCart(){
             if(this.shopCartLock == true)
                 return 
+            //点击购物车的时候将数据存储进入仓库
+            this.$store.commit("saveGoodsCount",this.goodsCount)
             this.ballVisible = true
             this.shopCartLock = true
         },
@@ -126,7 +129,7 @@ export default {
             this.shopCartLock = false          
         },
         getGoodsCount(count){
-            // console.log("这是父组件的方法,子组件传递给父组件的值是:" + count);
+            // 拿到子组件中传来的count         
             this.goodsCount = count
         },
     }
