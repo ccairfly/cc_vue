@@ -1,6 +1,6 @@
 <template>
     <div class="goods-list-box">
-        <div class="goods-item" v-for="item in goodsData" :key="item.url" @click="gotoGoodsInfo(item.id)">
+        <div class="goods-item" v-for="item in goodsData" :key="item.url" @click="gotoGoodsInfo(item.id,item.price_new)">
             <img 
             :src='item.url'
             alt="">
@@ -61,8 +61,8 @@ export default {
                 this.pageIndex = 2
             this.getGoodsList()
         },
-        gotoGoodsInfo(uid){
-            this.$router.push({ name: 'goodsInfo', params: { id: uid }})
+        gotoGoodsInfo(uid,uprice){
+            this.$router.push({ name: 'goodsInfo', params: { id: uid , price: uprice}})
         },
     }
 }

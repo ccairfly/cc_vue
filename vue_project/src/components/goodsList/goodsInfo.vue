@@ -22,7 +22,7 @@
                 <div class="mui-card-content">
                     <div class="mui-card-content-inner">
                         <div>
-                            <span class="price_old">市场价 : <del>¥9999</del></span>&nbsp;&nbsp;&nbsp;<span>现价 : <span class="price_new">¥{{ infoData.price_now }}</span></span>
+                            <span class="price_old">市场价 : <del>¥9999</del></span>&nbsp;&nbsp;&nbsp;<span>现价 : <span class="price_new">¥{{ price }}</span></span>
                         </div>
 
                         <goodsNumBox @sendNum="getGoodsCount" :maxCount="infoData.click"></goodsNumBox>
@@ -72,6 +72,7 @@ export default {
     data() {
         return {
             id : this.$route.params.id,
+            price : this.$route.params.price,
             thumbImg : [],
             infoData : {},
             ballVisible : false,
@@ -87,6 +88,15 @@ export default {
     },
     created() {
         this.getGoodsInfoImg()
+        //将price存入localstorage,若undefined ,从localstorage中取
+        if(this.price == undefined) {
+            if(localStorage.getItem("goodsprice") == null )
+                this.price = 99999
+            else
+                this.price = parseInt(localStorage.getItem("goodsprice")) 
+        }else{
+            localStorage.setItem("goodsprice",this.price)
+        }            
     },
     
     components : {
@@ -131,7 +141,7 @@ export default {
             }
             goods.id = this.id
             goods.goodsCounts = this.goodsCount
-            goods.goodsPrice = this.infoData.price_now
+            goods.goodsPrice = this.price
             this.$store.commit("pushToGoodsCar",goods)
 
             this.ballVisible = true
