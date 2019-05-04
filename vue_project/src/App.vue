@@ -18,7 +18,7 @@
                     <span class="mui-tab-label">会员</span>
                 </router-link>
                 <router-link class="mui-tab-item-cc" to="/shop">
-                    <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="shopCartBadge">{{ $store.state.goodsCount }}</span></span>
+                    <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id="shopCartBadge">{{ $store.getters.getAllCount }}</span></span>
                     <span class="mui-tab-label">购物车</span>
                 </router-link>
                 <router-link class="mui-tab-item-cc" to="/search">
@@ -39,6 +39,11 @@ export default {
             msg : "hello webpack vue App--cc",
             msg2 : "这是一个寂寞的天,下着有些伤心的雨",
         }
+    },
+    // created的时候从localstorage中拿出购物车中的数据
+    created(){
+        // this.$store.getters.getGoodsCarDataFromLocalStorage()
+        // console.log(this);
     },
     methods: {
         show(){

@@ -56,15 +56,56 @@ Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
+var openShopCar = JSON.parse(localStorage.getItem("shopCar")||'[]') 
+
 const store = new Vuex.Store({
     // state可以理解为组件中的data
     state: {
-        goodsCount: 0
+        // goodsCount: 0,
+        // 用来存放购物车的商品
+        // 数组中是商品对象{ id:商品id, goodsCounts:购买的商品数, goodsPrice:商品价格, isSelect:是否选择 }
+        allShopCount : 0,
+        goodsShopCar : openShopCar,
     },
     mutations: {
-        saveGoodsCount(state,args){
-            state.goodsCount = args  
+        pushToGoodsCar(state,goodsObj){
+            var pushFlag = false
+            state.allShopCount += goodsObj.goodsCounts
+
+            state.goodsShopCar.some(item=>{
+                if(item.id == goodsObj.id) {
+                    pushFlag = true
+                    item.goodsCounts += goodsObj.goodsCounts
+                    return false 
+                }
+            })
+            //找不到原来数组有数据,直接push
+            if(pushFlag == false) {
+                console.log("数据不一样push");
+                state.goodsShopCar.push(goodsObj)  
+            } else {
+                console.log("数据一样");
+            }
+            localStorage.setItem("shopCar",JSON.stringify(state.goodsShopCar))
         }
+    },
+    getters : {
+        // 获取数据应该在getters中
+        getAllCount(state){
+            var count = 0
+            state.goodsShopCar.forEach(item => {
+                count += parseInt(item.goodsCounts) 
+            });
+            state.allShopCount = count 
+            return state.allShopCount
+        }
+        // getGoodsCarDataFromLocalStorage(state){
+        //     // console.log(JSON.parse(localStorage.getItem("shopCar")));
+        //     state.goodsShopCar = JSON.parse(localStorage.getItem("shopCar")||'[]')  //没有则返回空数组
+        //     state.goodsShopCar.forEach(item=>{
+        //         state.allShopCount += item.goodsCounts
+        //     })
+        // },
     }
 })
 

@@ -77,6 +77,12 @@ export default {
             ballVisible : false,
             shopCartLock : false,
             goodsCount : 1,
+            goodshopData : {
+                goodsCounts : 0,
+                id : 0,
+                isSelect : true,
+                goodsPrice : 0
+            }
         }
     },
     created() {
@@ -104,12 +110,33 @@ export default {
         },
         // 加入购物车
         addToShopCart(){
+            if(this.goodsCount == 0)
+                return 
             if(this.shopCartLock == true)
                 return 
-            //点击购物车的时候将数据存储进入仓库
-            this.$store.commit("saveGoodsCount",this.goodsCount)
+            
+            //点击购物车的时候将数据存储进入仓库,方式1
+            // this.goodshopData.goodsPrice = this.infoData.price_now
+            // this.goodshopData.id = this.id
+            // this.goodshopData.goodsCounts = this.goodsCount
+            //这里需要将传入的数据先JSON.stringify在JSON.parse回来,保证每次传入的数据不一样--深拷贝
+            // this.$store.commit("pushToGoodsCar",JSON.parse(JSON.stringify(this.goodshopData)))
+
+            //点击购物车的时候将数据存储进入仓库,方式2,每次传的是var的值,保证每次传入数据不一样以深拷贝
+            var goods = {
+                id : 0 ,
+                isSelect : true , 
+                goodsCounts : 0 ,
+                goodsPrice : 0
+            }
+            goods.id = this.id
+            goods.goodsCounts = this.goodsCount
+            goods.goodsPrice = this.infoData.price_now
+            this.$store.commit("pushToGoodsCar",goods)
+
             this.ballVisible = true
             this.shopCartLock = true
+            // console.log(this);
         },
         ballBeforeEnter(el){
             el.style.transform = "translate(0,0)"

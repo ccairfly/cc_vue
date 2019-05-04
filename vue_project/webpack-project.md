@@ -182,4 +182,12 @@ state可以理解为组件中的data,专门用来存储数据
 *将vuex创建的store挂载到VM实例上 store:store,-->可以简写store,只要挂载到VM上,任何组件都可以使用$store来存取数据
 mutations里面存放着方法,可以理解为仓库管理员,需要操作仓库的数据则使用this.$store.commit("方法名")来操作仓库中store数据
 commit提交mutation最多只支持两个参数,参数1是state状态,参数2是通过commit提交来的参数
+*需要注意浅拷贝与深拷贝
 
+31.vuex的数据实现本地存储
+*在点击购物车的时候就把数据存储到本地localStorage--H5新特性IE8以上才可以使用,永久性存储,字符串的读取
+localStorage.setItem , localStorage.removeItem , localStorage.clear
+JSON.stringify(xxx) -->将xxx对象字符串化
+JSON.parse(xxx)	-->将xxx字符串转化成对象
+本地存储可以在application中Local Storage查看
+getters相当于获取器
