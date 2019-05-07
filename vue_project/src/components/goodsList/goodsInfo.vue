@@ -82,7 +82,9 @@ export default {
                 goodsCounts : 0,
                 id : 0,
                 isSelect : true,
-                goodsPrice : 0
+                goodsPrice : 0,
+                url : '',
+                title : ''
             }
         }
     },
@@ -137,7 +139,9 @@ export default {
                 id : 0 ,
                 isSelect : true , 
                 goodsCounts : 0 ,
-                goodsPrice : 0
+                goodsPrice : 0,
+                url : '',
+                title : ''
             }
             goods.id = this.id
             goods.goodsCounts = this.goodsCount

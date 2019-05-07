@@ -81,12 +81,31 @@ const store = new Vuex.Store({
             })
             //找不到原来数组有数据,直接push
             if(pushFlag == false) {
-                console.log("数据不一样push");
+                // console.log("数据不一样push");
                 state.goodsShopCar.push(goodsObj)  
             } else {
-                console.log("数据一样");
+                // console.log("数据一样");
             }
             localStorage.setItem("shopCar",JSON.stringify(state.goodsShopCar))
+        },
+        updateGoodsCarData(state,changeObj){
+            state.goodsShopCar.some(item=>{
+                if(item.id == changeObj.aid) {
+                    item.goodsCounts = changeObj.goodsCounts
+                    localStorage.setItem("shopCar",JSON.stringify(state.goodsShopCar))
+                    return true 
+                }
+            })
+        },
+        deleteGoodsCarData(state,did){
+            state.goodsShopCar.some((item,index)=>{
+                if(item.id == did) {
+                    state.goodsShopCar.splice(index,1)
+                    console.log('shanchu');
+                    
+                    return true 
+                }
+            })
         }
     },
     getters : {
@@ -98,7 +117,7 @@ const store = new Vuex.Store({
             });
             state.allShopCount = count 
             return state.allShopCount
-        }
+        },
         // getGoodsCarDataFromLocalStorage(state){
         //     // console.log(JSON.parse(localStorage.getItem("shopCar")));
         //     state.goodsShopCar = JSON.parse(localStorage.getItem("shopCar")||'[]')  //没有则返回空数组

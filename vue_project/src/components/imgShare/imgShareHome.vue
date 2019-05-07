@@ -77,7 +77,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 * { 
     touch-action: pan-y; 
 } 
