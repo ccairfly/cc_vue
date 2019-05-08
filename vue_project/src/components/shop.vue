@@ -48,8 +48,13 @@
             <div class="mui-card">
 				<div class="mui-card-content">
                     <div class="mui-card-content-inner">
-                        <h4>商品结算:</h4>
-                        <div><span>购买:xxxx</span> <span>总价:xxxx</span></div>
+                        <div class="sum">
+                            <div class="sum-text">
+                                <p>总计(不含运费):</p>
+                                <p>已勾选商品 <span class="sum-num">0</span> 件 , 总价 <span class="sum-num">￥0</span> </p>
+                            </div> 
+                            <mt-button type="danger" size="small">去结算</mt-button>
+                        </div>
                     </div>
 				</div>
 		    </div>
@@ -164,6 +169,19 @@ export default {
                 color: red;
                 font-size: 12px;
                 font-weight: bold;
+            }
+        }
+    }
+    .goods-settlement {
+        .sum {
+            width: 100%;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            .sum-num {
+                color: red;
+                font-weight: bold;
+                font-size: 16px;
             }
         }
     }
