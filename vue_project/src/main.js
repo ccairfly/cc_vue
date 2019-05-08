@@ -97,6 +97,15 @@ const store = new Vuex.Store({
                 }
             })
         },
+        updateGoodsSelect(state,changeObj){
+            state.goodsShopCar.some(item=>{
+                if(item.id == changeObj.aid) {
+                    item.isSelect = changeObj.isSelect
+                    localStorage.setItem("shopCar",JSON.stringify(state.goodsShopCar))
+                    return true 
+                }
+            })
+        },
         deleteGoodsCarData(state,did){
             state.goodsShopCar.some((item,index)=>{
                 if(item.id == did) {

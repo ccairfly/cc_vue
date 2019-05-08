@@ -28,7 +28,7 @@
             <div class="mui-card" v-for="(item,index) in shopCarList" :key="item.id">
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-                        <mt-switch v-model="item.isSelect"></mt-switch>
+                        <mt-switch v-model="item.isSelect" @change="selectChange(item.id,index)"></mt-switch>
                         <img :src='item.url'>
                         <div class="shopinfo">
                             <h3>{{ item.title }}</h3>
@@ -135,6 +135,13 @@ export default {
             this.updateShopCar()
             this.$store.commit('deleteGoodsCarData',del_id)
         },
+        selectChange(sid,ind){
+            var selectObj = {
+                aid : sid,
+                isSelect : this.shopCarList[ind].isSelect
+            }
+            this.$store.commit('updateGoodsSelect',selectObj)
+        }
     },
     components : {
         shopnumbox,
