@@ -51,7 +51,8 @@
                         <div class="sum">
                             <div class="sum-text">
                                 <p>总计(不含运费):</p>
-                                <p>已勾选商品 <span class="sum-num">0</span> 件 , 总价 <span class="sum-num">￥0</span> </p>
+                                <p>已勾选商品 <span class="sum-num">{{ $store.getters.getSelectCountAndSumPrice.slectCounts }}</span> 件 , 总价 
+                                <span class="sum-num">￥{{ $store.getters.getSelectCountAndSumPrice.sumPrice }}</span> </p>
                             </div> 
                             <mt-button type="danger" size="small">去结算</mt-button>
                         </div>

@@ -127,6 +127,19 @@ const store = new Vuex.Store({
             state.allShopCount = count 
             return state.allShopCount
         },
+        getSelectCountAndSumPrice(state){
+            var stateObj = {
+                slectCounts : 0 ,
+                sumPrice : 0
+            }
+            state.goodsShopCar.forEach(item=>{
+                if(item.isSelect){
+                    stateObj.slectCounts += parseInt(item.goodsCounts) 
+                    stateObj.sumPrice += parseInt(item.goodsCounts) * parseInt(item.goodsPrice)
+                }
+            })
+            return stateObj
+        }
         // getGoodsCarDataFromLocalStorage(state){
         //     // console.log(JSON.parse(localStorage.getItem("shopCar")));
         //     state.goodsShopCar = JSON.parse(localStorage.getItem("shopCar")||'[]')  //没有则返回空数组
