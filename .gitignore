@@ -5,3 +5,4 @@ node_modules
 /package-lock.json
 /webpack_dev/package-lock.json
 package-lock.json
+dist

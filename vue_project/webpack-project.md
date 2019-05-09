@@ -191,3 +191,5 @@ JSON.stringify(xxx) -->将xxx对象字符串化
 JSON.parse(xxx)	-->将xxx字符串转化成对象
 本地存储可以在application中Local Storage查看
 getters相当于获取器
+
+32.把dist目录删除,在命令行使用webpack打包,在dist中得到index.html和bundle.js,托管到apache服务器中打开
